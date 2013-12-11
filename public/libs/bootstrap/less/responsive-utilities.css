@@ -1,0 +1,5 @@
+NameError: .responsive-invisibility is undefined in C:\wamp\www\MOG\mog-central-system-svn\branches\IPNdev\Source-Code\MOG.CentralSystem.WebSite\libs\bootstrap\less\responsive-utilities.less:39:2
+38 .visible-xs {
+39   .responsive-invisibility();
+40   @media (max-width: @screen-xs-max) {
+

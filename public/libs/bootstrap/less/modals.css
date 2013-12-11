@@ -1,0 +1,5 @@
+NameError: variable @zindex-modal-background is undefined in C:\wamp\www\MOG\mog-central-system-svn\branches\IPNdev\Source-Code\MOG.CentralSystem.WebSite\libs\bootstrap\less\modals.less:33:11
+32   left: 0;
+33   z-index: @zindex-modal-background;
+34 
+

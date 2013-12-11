@@ -1,0 +1,5 @@
+NameError: .box-shadow is undefined in C:\wamp\www\MOG\mog-central-system-svn\branches\IPNdev\Source-Code\MOG.CentralSystem.WebSite\libs\bootstrap\less\progress-bars.less:45:2
+44   border-radius: @border-radius-base;
+45   .box-shadow(inset 0 1px 2px rgba(0,0,0,.1));
+46 }
+

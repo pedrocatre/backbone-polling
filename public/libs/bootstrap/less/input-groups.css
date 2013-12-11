@@ -1,0 +1,5 @@
+NameError: .input-lg is undefined in C:\wamp\www\MOG\mog-central-system-svn\branches\IPNdev\Source-Code\MOG.CentralSystem.WebSite\libs\bootstrap\less\input-groups.less:32:44
+31 .input-group-lg > .input-group-addon,
+32 .input-group-lg > .input-group-btn > .btn { .input-lg(); }
+33 .input-group-sm > .form-control,
+

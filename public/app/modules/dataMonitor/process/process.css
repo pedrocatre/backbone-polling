@@ -1,0 +1,40 @@
+.process-title {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.process-fetching-spinner {
+  font-size: 28px;
+}
+.process-container {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.process-container .control-fetching-btn {
+  margin-bottom: 10px;
+}
+.process-list {
+  padding: 0;
+  list-style-type: none;
+}
+.process-item {
+  margin-bottom: 3px;
+}
+.process-item .process-content {
+  padding: 5px;
+  background-color: aliceblue;
+}
+.process-item .process-content .process-content-col {
+  padding-top: 8px;
+}
+.process-item .process-content .process-title {
+  width: 86px;
+  margin-right: 40px;
+}
+.process-item .process-content .files-processed {
+  width: 45px;
+}
+.process-item .process-content .process-symbol {
+  font-size: 26px;
+  margin-left: 10px;
+  margin-right: 10px;
+}

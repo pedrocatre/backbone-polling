@@ -1,0 +1,16 @@
+<div class="process-content">
+    <div class="row">
+        <div class="col-md-1">
+            <span class="process-symbol"><i class="{{determineIconGivenTypeOfProcess type}}"></i></span>
+        </div>
+        <div class="col-md-11 process-content-col">
+            <span class="process-title truncate-string-with-ellipsis">{{ title }}</span>
+            <span class="files-processed truncate-string-with-ellipsis">{{ numberOfProcessedFiles }} files</span>
+            <div class="progress">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: {{ percentageComplete
+                }}%">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

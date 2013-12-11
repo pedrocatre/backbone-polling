@@ -1,0 +1,5 @@
+NameError: variable @line-height-computed is undefined in C:\wamp\www\MOG\mog-central-system-svn\branches\IPNdev\Source-Code\MOG.CentralSystem.WebSite\libs\bootstrap\less\breadcrumbs.less:8:17
+7   padding: 8px 15px;
+8   margin-bottom: @line-height-computed;
+9   list-style: none;
+

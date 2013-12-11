@@ -1,0 +1,5 @@
+NameError: variable @btn-default-color is undefined in C:\wamp\www\MOG\mog-central-system-svn\branches\IPNdev\Source-Code\MOG.CentralSystem.WebSite\libs\bootstrap\less\button-groups.less:11:22
+10   .btn-default & {
+11     border-top-color: @btn-default-color;
+12   }
+

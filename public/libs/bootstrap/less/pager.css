@@ -1,0 +1,5 @@
+NameError: .clearfix is undefined in C:\wamp\www\MOG\mog-central-system-svn\branches\IPNdev\Source-Code\MOG.CentralSystem.WebSite\libs\bootstrap\less\pager.less:11:2
+10   text-align: center;
+11   .clearfix();
+12   li {
+

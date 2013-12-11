@@ -1,0 +1,5 @@
+NameError: variable @list-group-bg is undefined in C:\wamp\www\MOG\mog-central-system-svn\branches\IPNdev\Source-Code\MOG.CentralSystem.WebSite\libs\bootstrap\less\list-group.less:23:20
+22   margin-bottom: -1px;
+23   background-color: @list-group-bg;
+24   border: 1px solid @list-group-border;
+

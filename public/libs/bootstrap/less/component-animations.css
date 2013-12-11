@@ -1,0 +1,5 @@
+NameError: .transition is undefined in C:\wamp\www\MOG\mog-central-system-svn\branches\IPNdev\Source-Code\MOG.CentralSystem.WebSite\libs\bootstrap\less\component-animations.less:12:2
+11   opacity: 0;
+12   .transition(opacity .15s linear);
+13   &.in {
+

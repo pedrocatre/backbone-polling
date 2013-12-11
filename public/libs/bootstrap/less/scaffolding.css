@@ -1,0 +1,5 @@
+NameError: .box-sizing is undefined in C:\wamp\www\MOG\mog-central-system-svn\branches\IPNdev\Source-Code\MOG.CentralSystem.WebSite\libs\bootstrap\less\scaffolding.less:11:2
+10 *:after {
+11   .box-sizing(border-box);
+12 }
+

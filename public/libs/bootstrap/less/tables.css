@@ -1,0 +1,5 @@
+NameError: variable @state-success-bg is undefined in C:\wamp\www\MOG\mog-central-system-svn\branches\IPNdev\Source-Code\MOG.CentralSystem.WebSite\libs\bootstrap\less\tables.less:172:28
+171 // Generate the contextual variants
+172 .table-row-variant(success; @state-success-bg; @state-success-border);
+173 .table-row-variant(danger; @state-danger-bg; @state-danger-border);
+

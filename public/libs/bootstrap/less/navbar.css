@@ -1,0 +1,5 @@
+NameError: .clearfix is undefined in C:\wamp\www\MOG\mog-central-system-svn\branches\IPNdev\Source-Code\MOG.CentralSystem.WebSite\libs\bootstrap\less\navbar.less:19:2
+18   // Prevent floats from breaking the navbar
+19   .clearfix();
+20 
+

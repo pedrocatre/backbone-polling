@@ -1,0 +1,5 @@
+NameError: .container-fixed is undefined in C:\wamp\www\MOG\mog-central-system-svn\branches\IPNdev\Source-Code\MOG.CentralSystem.WebSite\libs\bootstrap\less\grid.less:8:2
+7 .container {
+8   .container-fixed();
+9 }
+

@@ -1,0 +1,5 @@
+NameError: .box-shadow is undefined in C:\wamp\www\MOG\mog-central-system-svn\branches\IPNdev\Source-Code\MOG.CentralSystem.WebSite\libs\bootstrap\less\popovers.less:20:2
+19   border-radius: @border-radius-large;
+20   .box-shadow(0 5px 10px rgba(0,0,0,.2));
+21 
+

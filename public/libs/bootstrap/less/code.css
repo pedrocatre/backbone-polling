@@ -1,0 +1,5 @@
+NameError: variable @font-family-monospace is undefined in C:\wamp\www\MOG\mog-central-system-svn\branches\IPNdev\Source-Code\MOG.CentralSystem.WebSite\libs\bootstrap\less\code.less:9:15
+8 pre {
+9   font-family: @font-family-monospace;
+10 }
+

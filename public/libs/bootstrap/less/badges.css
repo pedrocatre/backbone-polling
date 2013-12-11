@@ -1,0 +1,5 @@
+NameError: variable @font-size-small is undefined in C:\wamp\www\MOG\mog-central-system-svn\branches\IPNdev\Source-Code\MOG.CentralSystem.WebSite\libs\bootstrap\less\badges.less:11:13
+10   padding: 3px 7px;
+11   font-size: @font-size-small;
+12   font-weight: @badge-font-weight;
+

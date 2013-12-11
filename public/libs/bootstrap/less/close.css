@@ -1,0 +1,5 @@
+NameError: .opacity is undefined in C:\wamp\www\MOG\mog-central-system-svn\branches\IPNdev\Source-Code\MOG.CentralSystem.WebSite\libs\bootstrap\less\close.less:13:2
+12   text-shadow: @close-text-shadow;
+13   .opacity(.2);
+14 
+

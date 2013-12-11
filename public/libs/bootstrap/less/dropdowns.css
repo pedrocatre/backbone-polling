@@ -1,0 +1,5 @@
+NameError: variable @caret-width-base is undefined in C:\wamp\www\MOG\mog-central-system-svn\branches\IPNdev\Source-Code\MOG.CentralSystem.WebSite\libs\bootstrap\less\dropdowns.less:13:16
+12   vertical-align: middle;
+13   border-top:   @caret-width-base solid @dropdown-caret-color;
+14   border-right: @caret-width-base solid transparent;
+

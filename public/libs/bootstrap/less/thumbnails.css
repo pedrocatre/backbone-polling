@@ -1,0 +1,5 @@
+NameError: .img-thumbnail is undefined in C:\wamp\www\MOG\mog-central-system-svn\branches\IPNdev\Source-Code\MOG.CentralSystem.WebSite\libs\bootstrap\less\thumbnails.less:8:2
+7 .thumbnail {
+8   .img-thumbnail();
+9   display: block; // Override the inline-block from `.img-thumbnail`
+

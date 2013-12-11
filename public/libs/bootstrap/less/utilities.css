@@ -1,0 +1,5 @@
+RuntimeError: No matching definition was found for `.clearfix()` in C:\wamp\www\MOG\mog-central-system-svn\branches\IPNdev\Source-Code\MOG.CentralSystem.WebSite\libs\bootstrap\less\utilities.less:10:2
+9 .clearfix {
+10   .clearfix();
+11 }
+

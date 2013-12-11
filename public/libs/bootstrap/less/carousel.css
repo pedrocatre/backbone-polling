@@ -1,0 +1,5 @@
+NameError: .transition is undefined in C:\wamp\www\MOG\mog-central-system-svn\branches\IPNdev\Source-Code\MOG.CentralSystem.WebSite\libs\bootstrap\less\carousel.less:19:4
+18     position: relative;
+19     .transition(.6s ease-in-out left);
+20 
+

@@ -1,0 +1,5 @@
+NameError: variable @label-color is undefined in C:\wamp\www\MOG\mog-central-system-svn\branches\IPNdev\Source-Code\MOG.CentralSystem.WebSite\libs\bootstrap\less\labels.less:11:9
+10   line-height: 1;
+11   color: @label-color;
+12   text-align: center;
+
