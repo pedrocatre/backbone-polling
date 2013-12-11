@@ -91,7 +91,7 @@ var pollOptions = {
         console.log('Finished another fetch request');
     }
 }
-this.processCollection = new ProcessCollection([], pollOptions);
+var processCollection = new ProcessCollection([], pollOptions);
 processCollection.startFetching();
 ```
 
