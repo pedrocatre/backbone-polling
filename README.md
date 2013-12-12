@@ -10,7 +10,7 @@ http://aqueous-badlands-8314.herokuapp.com
 
 ## Configuration Options
 
-Options can be used to customize the plugin’s behavior. All options are optional and they are defined as a JSON object.
+An object can be used to customize the plugin’s behavior, and all configurations are optional.
 
 ```javascript
 var options = {
