@@ -112,4 +112,6 @@ require.config({
 });
 ```
 
+## License
+
 The code in this repository can be used under the MIT License.
