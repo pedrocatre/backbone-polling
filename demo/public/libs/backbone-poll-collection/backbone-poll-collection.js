@@ -21,7 +21,6 @@ define([
 
             // Variable that controls stopping the fetch requests
             this.doFetchRequest = false;
-            return this;
         },
 
         settings: {
