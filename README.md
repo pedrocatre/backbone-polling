@@ -50,7 +50,7 @@ One possible usage is to create a backbone collection that inherits from backbon
 define(['backbone', 'processModel', 'backbonePollCollection'],
     function (Backbone, ProcessModel, BackbonePollCollection) {
         var ProcessCollection = BackbonePollCollection.extend({
-            url: 'http://localhost:3000/processes',
+            url: '/processes',
 
             model: ProcessModel,
 
