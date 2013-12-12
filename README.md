@@ -56,7 +56,7 @@ var pollOptions = {
         console.log('Finished another fetch request');
     }
 }
-var processCollection = new ProcessCollection([], pollOptions);
+var processCollection = new ProcessCollection([], {}, pollOptions);
 processCollection.startFetching();
 ```
 
