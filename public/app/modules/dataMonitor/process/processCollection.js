@@ -1,18 +1,20 @@
 /**
  * The process collection that inherits from BackbonePollCollection
  */
-define(['backbone', 'processModel', 'backbonePollCollection'],
-    function (Backbone, ProcessModel, BackbonePollCollection) {
-        var ProcessCollection = BackbonePollCollection.extend({
-            url: '/processes',
+define([
+    'backbonePollCollection',
+    'processModel'
+], function (BackbonePollCollection, ProcessModel) {
 
-            model: ProcessModel,
+    return BackbonePollCollection.extend({
+        url: '/processes',
 
-            initialize: function(){
-                BackbonePollCollection.prototype.initialize.apply(this, arguments);
-                return this;
-            }
-        });
+        model: ProcessModel,
 
-        return ProcessCollection;
+        initialize: function() {
+            // I'm putting this here so you don't forget to call the `BackbonePollCollection`
+            // `initialize` when overriding the method
+            BackbonePollCollection.prototype.initialize.apply(this, arguments);
+        }
     });
+});

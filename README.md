@@ -47,21 +47,20 @@ retryRequestOnFetchFail: specify if the plugin should retry the request if fails
 One possible usage is to create a backbone collection that inherits from backbone-poll-collection.
 
 ```javascript
-define(['backbone', 'processModel', 'backbonePollCollection'],
-    function (Backbone, ProcessModel, BackbonePollCollection) {
-        var ProcessCollection = BackbonePollCollection.extend({
-            url: '/processes',
+define([
+    'backbonePollCollection'
+], function (BackbonePollCollection) {
 
-            model: ProcessModel,
+    return BackbonePollCollection.extend({
+        url: '/processes',
 
-            initialize: function(){
-                BackbonePollCollection.prototype.initialize.apply(this, arguments);
-                return this;
-            }
-        });
-
-        return ProcessCollection;
+        initialize: function(){
+            //I'm putting this here so you don't forget to call the `BackbonePollCollection`
+            //`initialize` when overriding the method
+            BackbonePollCollection.prototype.initialize.apply(this, arguments);
+        }
     });
+});
 ```
 
 Simply Instantiate and start fetching:
