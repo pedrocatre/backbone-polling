@@ -16,8 +16,8 @@ define([
 ], function (Backbone, _, $) {
     return Backbone.Collection.extend({
 
-        initialize: function(models, options){
-            this.settings = $.extend( {}, this.settings, options );
+        initialize: function(models, options, pollOptions){
+            this.settings = $.extend( {}, this.settings, pollOptions );
 
             // Variable that controls stopping the fetch requests
             this.doFetchRequest = false;

@@ -30,7 +30,7 @@ define(['backbone', 'masterView', 'handlebars', 'text!../app/modules/dataMonitor
                         console.log('Finished another fetch request');
                     }
                 }
-                this.processCollection = new ProcessCollection([], pollOptions);
+                this.processCollection = new ProcessCollection([], {}, pollOptions);
                 MasterView.prototype.initialize.apply(this);
                 return this;
             },
