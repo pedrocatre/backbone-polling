@@ -11,7 +11,7 @@
  */
 define(['backbone', 'underscore', 'jquery'],
     function (Backbone, _, $) {
-        var PollCollection = Backbone.Collection.extend({
+        return Backbone.Collection.extend({
 
             initialize: function(models, options){
                 this.settings = $.extend( {}, this.settings, options );
@@ -115,6 +115,4 @@ define(['backbone', 'underscore', 'jquery'],
             }
 
         });
-
-        return PollCollection;
     });
