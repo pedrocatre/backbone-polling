@@ -96,7 +96,7 @@ retryRequestOnFetchFail: specify if the plugin should retry the request if fails
 
 ## Installation
 
-To install, include the `public/backbone-poll-collection.js` file in your project and add its path to require.config (if you are using requireJS).
+To install, include the `backbone-poll-collection.js` file in your project and add its path to require.config (if you are using requireJS).
 
 ```javascript
 require.config({

@@ -13,7 +13,7 @@ require.config({
         respond: '../libs/respond/respond.min', // necessary so ie8 can support media queries
 
         // PollCollection backbone plugin
-        backbonePollCollection: '../backbone-poll-collection',
+        backbonePollCollection: '../libs/backbone-poll-collection/backbone-poll-collection',
 
         //// app
 
