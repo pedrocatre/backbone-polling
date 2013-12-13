@@ -1,6 +1,7 @@
 /**
  *
  * Backbone-Poll-Collection v0.0.1
+ * https://github.com/pedrocatre/backbone-poll-collection
  *
  * Copyright (c) 2013 Pedro Catré
  *
