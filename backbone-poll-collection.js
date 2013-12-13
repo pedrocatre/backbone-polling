@@ -108,11 +108,11 @@ define([
 
         stopFetching: function() {
             this.doFetchRequest = false;
-            this.abortPendingFetchRequests();
             if(_.isUndefined(this.timeout) === false) {
                 clearTimeout(this.timeout);
                 this.timeout = undefined;
             }
+            this.abortPendingFetchRequests();
             return this;
         }
 
