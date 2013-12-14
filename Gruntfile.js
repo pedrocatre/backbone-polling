@@ -41,7 +41,15 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
+    grunt.registerTask('sync-src-and-demo',
+        'Copies the current version of the source file to the demo lib',
+        function() {
+            grunt.file.copy('src/backbone-poll-collection.js',
+                'demo/public/libs/backbone-poll-collection/backbone-poll-collection.js');
+            grunt.log.ok('All done copying the src file to the demo lib folder');
+    });
+
     // Default task.
-    grunt.registerTask('default', ['jshint', 'uglify']);
+    grunt.registerTask('default', ['jshint', 'uglify', 'sync-src-and-demo']);
 
 };

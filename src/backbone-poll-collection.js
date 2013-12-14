@@ -71,7 +71,8 @@ define([
 
         /**
          * Helper function for calling handlers
-         * @param callbackCodeName is the name of the handler setting whose callback we want to execute (ex: doneFetchCallback)
+         * @param callbackCodeName is the name of the handler setting whose callback we want to
+         * execute (ex: doneFetchCallback)
          * @returns {*}
          * @private
          */
