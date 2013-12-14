@@ -16,7 +16,7 @@ define(['backbone', 'masterView', 'handlebars', 'text!../app/modules/dataMonitor
                 var pollOptions = {
                     havingProblemsFetchingFromTheServer: false,
                     refresh: 2000,
-                    doneFetchCallback: function() {
+                    doneFetchCallback: function(collection, response, options) {
                         console.log('Done with the fetch request');
                     },
                     failedFetchCallback: function() {

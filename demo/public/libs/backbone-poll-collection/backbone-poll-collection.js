@@ -81,7 +81,7 @@ define([
 
             if(_.isFunction(callback)) {
                 // First argument is the callbackCodeName, so don't send that
-                callback.apply(this, _.rest(arguments, 1));
+                callback.apply(this.settings, _.rest(arguments, 1));
             }
             return this;
         },
