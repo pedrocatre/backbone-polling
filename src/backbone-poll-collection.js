@@ -12,7 +12,7 @@
  */
 define([
     'backbone',
-    'underscore',
+    '.',
     'jquery'
 ], function (Backbone, _, $) {
     return Backbone.Collection.extend({
