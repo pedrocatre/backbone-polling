@@ -23,7 +23,7 @@ module.exports = function(grunt) {
                 options: {
                     jshintrc: '.jshintrc'
                 },
-                src: ['src/**/*.js']
+                src: ['src/backbone-poll-collection.js']
             }
         },
         uglify: {
@@ -42,6 +42,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
     // Default task.
-    grunt.registerTask('default', ['uglify']);
+    grunt.registerTask('default', ['jshint', 'uglify']);
 
 };
