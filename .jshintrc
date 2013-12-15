@@ -1,6 +1,6 @@
 {
-    "curly": true,
     "eqeqeq": true,
+    "curly": true,
     "immed": true,
     "latedef": true,
     "newcap": true,
