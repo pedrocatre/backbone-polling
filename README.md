@@ -5,6 +5,12 @@ Backbone-Poll-Collection
 A simple plugin to give poll capabilities to backbone collections that uses a refresh rate to actively fetch data and keep the collection updated. In other words, it gives a backbone collection the ability to periodically query a data source.
 Useful for fetching dynamic data for monitoring.
 
+## Source Code And Downloads
+
+Development: [backbone-poll-collection.js](https://raw.github.com/pedrocatre/backbone-poll-collection/master/dist/backbone-poll-collection.js)
+
+Production: [backbone-poll-collection.min.js](https://raw.github.com/pedrocatre/backbone-poll-collection/master/dist/backbone-poll-collection.min.js)
+
 ## Basic Demo
 
 http://aqueous-badlands-8314.herokuapp.com
