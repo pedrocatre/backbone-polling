@@ -9,11 +9,12 @@ var updateExistingProcesses = function() {
     for(var i=0; i< processesData.length; i++) {
         processesData[i].numberOfProcessedFiles++;
         processesData[i].percentageComplete += Math.floor((Math.random()*4)+1);
-        processesData[i].percentageComplete = (processesData[i].percentageComplete > 100) ? 100: processesData[i].percentageComplete;
+        processesData[i].percentageComplete =
+            (processesData[i].percentageComplete > 100) ? 100: processesData[i].percentageComplete;
     }
 }
 
-var sampleTypesOfProcess = ['Testing', 'Refactoring', 'Implementing', 'Compressing', 'Hammering', 'Forking']
+var sampleTypesOfProcess = ['Testing', 'Refactoring', 'Implementing', 'Compressing', 'Hammering', 'Forking'];
 
 var createNewProcess = function() {
     return {
@@ -23,8 +24,8 @@ var createNewProcess = function() {
         'numberOfProcessedFiles': Math.floor((Math.random() * 5) + 1),
         'title': 'process ' + Math.floor((Math.random() * 10000) + 1),
         'type': sampleTypesOfProcess[Math.floor((Math.random() * sampleTypesOfProcess.length))]
-    }
-}
+    };
+};
 
 var refreshRate = 500;
 
