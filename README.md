@@ -7,9 +7,9 @@ Useful for fetching dynamic data for monitoring.
 
 ## Source Code And Downloads
 
-Development: [backbone-poll-collection.js](https://raw.github.com/pedrocatre/backbone-poll-collection/master/dist/backbone-poll-collection.js)
+Development: [backbone-polling.js](https://raw.github.com/pedrocatre/backbone-polling/master/dist/backbone-polling.js)
 
-Production: [backbone-poll-collection.min.js](https://raw.github.com/pedrocatre/backbone-poll-collection/master/dist/backbone-poll-collection.min.js)
+Production: [backbone-polling.min.js](https://raw.github.com/pedrocatre/backbone-polling/master/dist/backbone-polling.min.js)
 
 ## Basic Demo
 
@@ -104,7 +104,7 @@ var options = {
 
 ## Installation
 
-To install, include the `backbone-poll-collection.js` file in your project and add its path to require.config (if you are using requireJS).
+To install, include the `backbone-polling.js` file in your project and add its path to require.config (if you are using requireJS).
 
 ```javascript
 require.config({
@@ -112,7 +112,7 @@ require.config({
         //...
 
         // PollCollection backbone plugin
-        backbonePollCollection: '../backbone-poll-collection',
+        backbonePollCollection: '../backbone-polling',
 
         //...
     }

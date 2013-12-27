@@ -1,5 +1,5 @@
 {
-  "name": "backbone-poll-collection",
+  "name": "backbone-polling",
   "version": "0.1.0",
   "description": "A simple plugin to give poll capabilities to backbone collections that uses a refresh rate to actively fetch data and keep the collection updated. In other words, it gives a backbone collection the ability to periodically query a data source. Useful for fetching dynamic data for monitoring.",
   "scripts": {
@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/pedrocatre/backbone-poll-collection.git"
+    "url": "git://github.com/pedrocatre/backbone-polling.git"
   },
   "author": "Pedro Catré",
   "license": "MIT",
@@ -18,9 +18,9 @@
     }
   ],
   "bugs": {
-    "url": "https://github.com/pedrocatre/backbone-poll-collection/issues"
+    "url": "https://github.com/pedrocatre/backbone-polling/issues"
   },
-  "homepage": "https://github.com/pedrocatre/backbone-poll-collection",
+  "homepage": "https://github.com/pedrocatre/backbone-polling",
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-contrib-uglify": "~0.2.7",

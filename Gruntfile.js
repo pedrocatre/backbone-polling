@@ -48,16 +48,16 @@ module.exports = function(grunt) {
     grunt.registerTask('sync-src-and-demo',
         'Copies the current version of the source file to the demo lib',
         function() {
-            grunt.file.copy('src/backbone-poll-collection.js',
-                'demo/public/libs/backbone-poll-collection/backbone-poll-collection.js');
+            grunt.file.copy('src/backbone-polling.js',
+                'demo/public/libs/backbone-polling/backbone-polling.js');
             grunt.log.ok('All done copying the src file to the demo lib folder');
     });
 
     grunt.registerTask('sync-src-and-dist',
         'Copies the current version of the source file to the dist folder',
         function() {
-            grunt.file.copy('src/backbone-poll-collection.js',
-                'dist/backbone-poll-collection.js');
+            grunt.file.copy('src/backbone-polling.js',
+                'dist/backbone-polling.js');
             grunt.log.ok('All done copying the src file to the demo lib folder');
         });
 
