@@ -2,7 +2,7 @@ Backbone-Polling
 ==============
 [![Build Status](https://travis-ci.org/pedrocatre/backbone-polling.png)](https://travis-ci.org/pedrocatre/backbone-polling)
 
-A simple plugin to give poll capabilities to backbone collections that uses a refresh rate to actively fetch data and keep the collection updated. In other words, it gives a backbone collection the ability to periodically query a data source.
+A simple plugin to give poll capabilities to backbone collections and models that uses a refresh rate to actively fetch data and keep the collection or model updated. In other words, it gives a backbone collection or model the ability to periodically query a data source.
 Useful for fetching dynamic data for monitoring.
 
 ## Source Code And Downloads
@@ -17,7 +17,7 @@ http://aqueous-badlands-8314.herokuapp.com
 
 ## Usage
 
-One possible usage is to create a backbone collection and add the plugin as a mixin.
+One possible usage is to create a backbone collection (or model) and add the plugin as a mixin.
 
 ```javascript
 define([
