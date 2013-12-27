@@ -11,17 +11,16 @@
  * from the server. Useful for fetching dynamic data for monitoring.
  */
 define([
-    'backbone',
     'underscore',
     'jquery'
-], function (Backbone, _, $) {
-    return Backbone.Collection.extend({
+], function (_, $) {
+    return {
 
-        initialize: function(models, options, pollOptions){
+        // Variable that controls stopping the fetch requests
+        doFetchRequest: false,
+
+        configure: function(pollOptions){
             this.settings = $.extend( {}, this.settings, pollOptions );
-
-            // Variable that controls stopping the fetch requests
-            this.doFetchRequest = false;
         },
 
         settings: {
@@ -82,7 +81,7 @@ define([
 
             if(_.isFunction(callback)) {
                 // First argument is the callbackCodeName, so don't send that
-                callback.apply(this.settings, _.rest(arguments, 1));
+                callback.apply(this, _.rest(arguments, 1));
             }
             return this;
         },
@@ -118,5 +117,5 @@ define([
             return this;
         }
 
-    });
+    };
 });

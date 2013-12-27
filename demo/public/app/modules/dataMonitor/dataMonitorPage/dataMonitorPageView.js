@@ -12,25 +12,21 @@ define(['backbone', 'masterView', 'handlebars', 'text!../app/modules/dataMonitor
             initialize: function () {
                 this.dataMonitorPageBodyTemplate = Handlebars.compile(DataMonitorPageBodyTemplate);
 
-                // Setup some example options for the Backbone Poll Collection
+                // Setup some example options for the Backbone Polling plugin
                 var pollOptions = {
-                    havingProblemsFetchingFromTheServer: false,
                     refresh: 2000,
-                    doneFetchCallback: function(collection, response, options) {
+                    doneFetchCallback: function() {
                         console.log('Done with the fetch request');
                     },
                     failedFetchCallback: function() {
-                        console.log('The request failed');
-                        if(!this.havingProblemsFetchingFromTheServer) {
-                            this.havingProblemsFetchingFromTheServer = true;
-                            console.log('Had a problem requesting from the server. Going to keep trying.')
-                        }
+                        console.log('Had a problem requesting from the server. Going to keep trying.');
                     },
                     alwaysCallback: function() {
                         console.log('Finished another fetch request');
                     }
-                }
-                this.processCollection = new ProcessCollection([], {}, pollOptions);
+                };
+                this.processCollection = new ProcessCollection();
+                this.processCollection.configure(pollOptions);
                 MasterView.prototype.initialize.apply(this);
                 return this;
             },

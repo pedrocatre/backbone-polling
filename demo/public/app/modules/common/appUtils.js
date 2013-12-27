@@ -3,8 +3,7 @@
  * It is helpful because it avoids to much pollution of the global namespace preventing possible conflicts for example:
  * with project libs and browser extensions.
  */
-define([],
-    function () {
-        window.AppUtils = window.AppUtils || {};
-        return window.AppUtils;
-    });
+define([], function () {
+    window.AppUtils = window.AppUtils || {};
+    return window.AppUtils;
+});
