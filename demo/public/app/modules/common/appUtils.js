@@ -4,6 +4,8 @@
  * with project libs and browser extensions.
  */
 define([], function () {
+    'use strict';
+
     window.AppUtils = window.AppUtils || {};
     return window.AppUtils;
 });

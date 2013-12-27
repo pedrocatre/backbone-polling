@@ -4,6 +4,7 @@
 define(['handlebars',
     'underscore'
 ], function (Handlebars, _) {
+    'use strict';
 
     Handlebars.registerHelper('determineIconGivenTypeOfProcess', function(typeOfProcess) {
         switch(typeOfProcess)

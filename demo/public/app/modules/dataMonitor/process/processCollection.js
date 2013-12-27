@@ -7,6 +7,7 @@ define([
     'backbonePollCollection',
     'processModel'
 ], function (Backbone, _, BackbonePollCollection, ProcessModel) {
+    'use strict';
 
     var ProcessCollection = Backbone.Collection.extend({
         url: '/processes',

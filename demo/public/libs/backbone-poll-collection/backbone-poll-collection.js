@@ -14,6 +14,8 @@ define([
     'underscore',
     'jquery'
 ], function (_, $) {
+    'use strict';
+
     return {
 
         // Variable that controls stopping the fetch requests

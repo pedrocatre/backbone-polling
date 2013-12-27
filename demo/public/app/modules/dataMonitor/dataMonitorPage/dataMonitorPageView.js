@@ -8,6 +8,8 @@ define(['backbone',
     'processListView',
     'processCollection'
 ], function (Backbone, MasterView, Handlebars, DataMonitorPageBodyTemplate, ProcessListView, ProcessCollection) {
+    'use strict';
+
     return MasterView.extend({
 
         dom: {

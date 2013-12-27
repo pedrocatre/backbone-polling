@@ -3,17 +3,18 @@
  */
 define(['backbone'
 ], function (Backbone) {
+    'use strict';
 
-        return Backbone.Model.extend({
+    return Backbone.Model.extend({
 
-            idAttribute: 'Id',
+        idAttribute: 'Id',
 
-            defaults: {
-                typeOfProcess: 'Refactoring',
-                percentageComplete: 0,
-                state: 'executing',
-                numberOfProcessedFiles: 0,
-                title: ''
-            }
-        });
+        defaults: {
+            typeOfProcess: 'Refactoring',
+            percentageComplete: 0,
+            state: 'executing',
+            numberOfProcessedFiles: 0,
+            title: ''
+        }
     });
+});

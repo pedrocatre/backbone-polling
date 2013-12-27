@@ -8,6 +8,8 @@ define([
     'dataMonitorPageView',
     'bootstrap'
 ], function ($, _, Backbone, DataMonitorPageView) {
+    'use strict';
+
     var AppRouter = Backbone.Router.extend({
         routes: {
 			'*actions': 'dataMonitorPage'
@@ -25,7 +27,7 @@ define([
     });
 
     var initialize = function () {
-        app = new AppRouter();
+        var app = new AppRouter();
         Backbone.history.start();
     };
 

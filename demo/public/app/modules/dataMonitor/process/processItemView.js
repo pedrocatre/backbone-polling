@@ -7,6 +7,7 @@ define(['backbone',
     'text!../app/modules/dataMonitor/process/processItem.html',
     'handlebarsHelpers'
 ], function (Backbone, Handlebars, BaseView, ProcessItemTemplate) {
+    'use strict';
 
     return BaseView.extend({
 

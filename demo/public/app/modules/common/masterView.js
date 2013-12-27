@@ -5,6 +5,7 @@
 define(['backbone',
     'baseView'
 ], function (Backbone, BaseView) {
+    'use strict';
 
     return BaseView.extend({
 

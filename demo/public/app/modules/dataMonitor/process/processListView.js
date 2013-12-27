@@ -9,6 +9,8 @@ define(['backbone',
     'processItemView',
     'backbone'
 ], function (Backbone, _, Handlebars, MasterView, ProcessListTemplate, ProcessItemView) {
+    'use strict';
+
     return MasterView.extend({
 
         dom: {
