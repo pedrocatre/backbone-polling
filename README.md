@@ -94,7 +94,6 @@ var options = {
 * configure(options): specify custom options for the plugin
 * startFetching: starts polling data from the server.
 * stopFetching: stops fetching data from the server.
-* abortPendingFetchRequests: aborts the current fetch request.
 * isFetching: returns true if the collection is fetching data and false otherwise.
 
 ## Installation
