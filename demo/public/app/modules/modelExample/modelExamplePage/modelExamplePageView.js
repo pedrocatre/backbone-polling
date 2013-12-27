@@ -1,13 +1,13 @@
 /**
- * View responsible for rendering the data monitor page
+ * View responsible for rendering the model example
  */
 define(['backbone',
     'masterView',
     'handlebars',
-    'text!../app/modules/dataMonitor/dataMonitorPage/dataMonitorPageBody.html',
-    'processListView',
-    'processCollection'
-], function (Backbone, MasterView, Handlebars, DataMonitorPageBodyTemplate, ProcessListView, ProcessCollection) {
+    'text!../app/modules/modelExample/modelExamplePage/modelExamplePageBody.html',
+    'pollingModelView',
+    'pollingModel'
+], function (Backbone, MasterView, Handlebars, ModelExamplePageTemplate, PollingModelView, PollingModel) {
     'use strict';
 
     return MasterView.extend({
@@ -17,7 +17,7 @@ define(['backbone',
         },
 
         initialize: function () {
-            this.dataMonitorPageBodyTemplate = Handlebars.compile(DataMonitorPageBodyTemplate);
+            this.modelExamplePageTemplate = Handlebars.compile(ModelExamplePageTemplate);
 
             // Setup some example options for the Backbone Polling plugin
             var pollOptions = {
@@ -32,8 +32,8 @@ define(['backbone',
                     console.log('Finished another fetch request');
                 }
             };
-            this.processCollection = new ProcessCollection();
-            this.processCollection.configure(pollOptions);
+            this.pollingModel = new PollingModel();
+            this.pollingModel.configure(pollOptions);
             MasterView.prototype.initialize.apply(this);
             return this;
         },
@@ -41,17 +41,17 @@ define(['backbone',
         render: function() {
             var self = this;
             this._removeSubViews();
-            this.$el.html(this.dataMonitorPageBodyTemplate());
-            this.processListView = new ProcessListView({el: this.$el.find(this.dom.PROCESSCONTAINER),
-                collection: this.processCollection}).render();
-            this.processCollection.startFetching();
-            this.subViews.push(this.processListView);
+            this.$el.html(this.modelExamplePageTemplate());
+            this.pollingModelView = new PollingModelView({el: this.$el.find(this.dom.PROCESSCONTAINER),
+                model: this.pollingModel}).render();
+            this.pollingModel.startFetching();
+            this.subViews.push(this.pollingModelView);
             return this;
         },
 
         remove: function() {
-            this.processCollection.stopFetching();
-            this.processCollection = null;
+            this.pollingModel.stopFetching();
+            this.pollingModel = null;
             MasterView.prototype.remove.apply(this);
         }
 

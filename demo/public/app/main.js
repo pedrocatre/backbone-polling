@@ -11,6 +11,7 @@ require.config({
         text: '../libs/require/text',
         bootstrap: '../libs/bootstrap/js/bootstrap.min',
         respond: '../libs/respond/respond.min', // necessary so ie8 can support media queries
+        gauge: '../libs/gauge/gauge.min',
 
         // PollCollection backbone plugin
         backbonePollCollection: '../libs/backbone-poll-collection/backbone-poll-collection',
@@ -31,6 +32,13 @@ require.config({
         processCollection: 'modules/dataMonitor/process/processCollection',
         processListView: 'modules/dataMonitor/process/processListView',
         processItemView: 'modules/dataMonitor/process/processItemView',
+
+        // modeExample
+        modelExamplePageView: 'modules/modelExample/modelExamplePage/modelExamplePageView',
+
+        // polling model
+        pollingModel: 'modules/modelExample/pollingModelExample/pollingModel',
+        pollingModelView: 'modules/modelExample/pollingModelExample/pollingModelView',
 
         // tests
         runJasmine: 'tests/runJasmine'

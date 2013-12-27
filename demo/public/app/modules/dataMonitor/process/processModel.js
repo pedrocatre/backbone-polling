@@ -1,5 +1,5 @@
 /**
- * An simple example model to represent a process
+ * A simple example model to represent a process
  */
 define(['backbone'
 ], function (Backbone) {
