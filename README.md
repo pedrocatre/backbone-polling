@@ -11,22 +11,24 @@ http://aqueous-badlands-8314.herokuapp.com
 
 ## Usage
 
-One possible usage is to create a backbone collection that inherits from backbone-poll-collection.
+One possible usage is to create a backbone collection and add the plugin as a mixin.
 
 ```javascript
 define([
-    'backbonePollCollection'
-], function (BackbonePollCollection) {
+    'backbone',
+    'underscore',
+    'backbonePollCollection',
+], function (Backbone, _, BackbonePollCollection) {
+    'use strict';
 
-    return BackbonePollCollection.extend({
+    var ProcessCollection = Backbone.Collection.extend({
         url: '/processes',
-
-        initialize: function(){
-            //I'm putting this here so you don't forget to call the `BackbonePollCollection`
-            //`initialize` when overriding the method
-            BackbonePollCollection.prototype.initialize.apply(this, arguments);
-        }
     });
+
+    // Add backbone polling mixin
+    _.extend(ProcessCollection.prototype, BackbonePollCollection);
+
+    return ProcessCollection;
 });
 ```
 
@@ -45,19 +47,15 @@ var pollOptions = {
     doneFetchCallback: function() {
         console.log('Done with the fetch request');
     },
-    havingProblemsFetchingFromTheServer: false,
     failedFetchCallback: function() {
-        console.log('The request failed');
-        if(!this.havingProblemsFetchingFromTheServer) {
-            this.havingProblemsFetchingFromTheServer = true;
-            console.log('Had a problem requesting from the server. Going to keep trying.')
-        }
+        console.log('Had a problem requesting from the server. Going to keep trying.');
     },
     alwaysCallback: function() {
         console.log('Finished another fetch request');
     }
-}
-var processCollection = new ProcessCollection([], {}, pollOptions);
+};
+var processCollection = new ProcessCollection();
+processCollection.configure(pollOptions);
 processCollection.startFetching();
 ```
 

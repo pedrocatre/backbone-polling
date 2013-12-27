@@ -1,5 +1,5 @@
 /**
- * The process collection that inherits from BackbonePollCollection
+ * The process collection that has the plugin as a mixin
  */
 define([
     'backbone',

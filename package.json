@@ -1,32 +1,30 @@
 {
-    "name": "backbone-poll-collection",
-    "version": "0.1.0",
-    "description": "A simple plugin to give poll capabilities to backbone collections that uses a refresh rate to actively fetch data and keep the collection updated. In other words, it gives a backbone collection the ability to periodically query a data source. Useful for fetching dynamic data for monitoring.",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/pedrocatre/backbone-poll-collection.git"
-    },
-    "author": "Pedro Catré",
-    "license": "MIT",
-    "licenses": [
-        {
-            "type": "MIT",
-            "url": "/blob/master/LICENSE-MIT"
-        }
-    ],
-    "bugs": {
-        "url": "https://github.com/pedrocatre/backbone-poll-collection/issues"
-    },
-    "homepage": "https://github.com/pedrocatre/backbone-poll-collection",
-    "devDependencies": {
-        "grunt": "~0.4.2",
-        "grunt-contrib-uglify": "~0.2.7",
-        "grunt-contrib-jshint": "~0.7.2"
-    },
-    "scripts": {
-        "test": "grunt --verbose"
+  "name": "backbone-poll-collection",
+  "version": "0.1.0",
+  "description": "A simple plugin to give poll capabilities to backbone collections that uses a refresh rate to actively fetch data and keep the collection updated. In other words, it gives a backbone collection the ability to periodically query a data source. Useful for fetching dynamic data for monitoring.",
+  "scripts": {
+    "test": "grunt --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pedrocatre/backbone-poll-collection.git"
+  },
+  "author": "Pedro Catré",
+  "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "/blob/master/LICENSE-MIT"
     }
+  ],
+  "bugs": {
+    "url": "https://github.com/pedrocatre/backbone-poll-collection/issues"
+  },
+  "homepage": "https://github.com/pedrocatre/backbone-poll-collection",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-contrib-clean": "~0.5.0"
+  }
 }

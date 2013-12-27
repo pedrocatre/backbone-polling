@@ -12,6 +12,9 @@ module.exports = function(grunt) {
             '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>;' +
             ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
         // Task configuration.
+        clean: {
+            files: ['dist']
+        },
         jshint: {
             gruntfile: {
                 options: {
@@ -23,7 +26,7 @@ module.exports = function(grunt) {
                 options: {
                     jshintrc: '.jshintrc'
                 },
-                src: ['src/backbone-poll-collection.js']
+                src: ['src/<%= pkg.name %>.js']
             }
         },
         uglify: {
@@ -31,8 +34,8 @@ module.exports = function(grunt) {
                 banner: '<%= banner %>'
             },
             dist: {
-                src: 'src/backbone-poll-collection.js',
-                dest: 'src/backbone-poll-collection.min.js'
+                src: 'dist/<%= pkg.name %>.js',
+                dest: 'dist/<%= pkg.name %>.min.js'
             }
         }
     });
@@ -40,6 +43,7 @@ module.exports = function(grunt) {
     // These plugins provide necessary tasks.
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
     grunt.registerTask('sync-src-and-demo',
         'Copies the current version of the source file to the demo lib',
@@ -49,7 +53,15 @@ module.exports = function(grunt) {
             grunt.log.ok('All done copying the src file to the demo lib folder');
     });
 
+    grunt.registerTask('sync-src-and-dist',
+        'Copies the current version of the source file to the dist folder',
+        function() {
+            grunt.file.copy('src/backbone-poll-collection.js',
+                'dist/backbone-poll-collection.js');
+            grunt.log.ok('All done copying the src file to the demo lib folder');
+        });
+
     // Default task.
-    grunt.registerTask('default', ['jshint', 'uglify', 'sync-src-and-demo']);
+    grunt.registerTask('default', ['jshint', 'clean', 'sync-src-and-dist', 'uglify', 'sync-src-and-demo']);
 
 };
