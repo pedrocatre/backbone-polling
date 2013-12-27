@@ -57,8 +57,8 @@ var pollOptions = {
 var processCollection = new ProcessCollection();
 
 // Specify custom options for the plugin.
-// You can also call this function inside the collection's initialize function and pass the options for the plugin when
-// instantiating a new collection.
+// You can also call this function inside the collection's initialize function and pass the
+// options for the plugin when instantiating a new collection.
 processCollection.configure(pollOptions);
 processCollection.startFetching();
 ```
