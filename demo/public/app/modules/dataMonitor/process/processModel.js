@@ -1,10 +1,10 @@
 /**
  * An simple example model to represent a process
  */
-define(['backbone'],
-    function (Backbone) {
+define(['backbone'
+], function (Backbone) {
 
-        var Process = Backbone.Model.extend({
+        return Backbone.Model.extend({
 
             idAttribute: 'Id',
 
@@ -15,8 +15,5 @@ define(['backbone'],
                 numberOfProcessedFiles: 0,
                 title: ''
             }
-
         });
-
-        return Process;
     });
