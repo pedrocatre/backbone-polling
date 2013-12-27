@@ -88,16 +88,6 @@ define([
             return this;
         },
 
-        resetFetching: function() {
-            if(this.isFetching()) {
-                this.stopFetching();
-                this.abortPendingFetchRequests();
-            }
-            this.reset();
-            this.startFetching();
-            return this;
-        },
-
         abortPendingFetchRequests: function() {
             if(!_.isUndefined(this.fetchRequest)) {
                 this.fetchRequest.abort();
