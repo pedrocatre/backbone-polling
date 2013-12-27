@@ -44,7 +44,7 @@ var startGeneratingData = function(length) {
 
         // Remove excess processes
         if(processesData.length > maxNumberOrProcesses) {
-            processesData = processesData.slice(maxNumberOrProcesses/2, maxNumberOrProcesses);
+            processesData.splice(0, maxNumberOrProcesses/2);
         }
 
         startGeneratingData(refreshRate);
