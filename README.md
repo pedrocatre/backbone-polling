@@ -55,6 +55,10 @@ var pollOptions = {
     }
 };
 var processCollection = new ProcessCollection();
+
+// Specify custom options for the plugin.
+// You can also call this function inside the collection's initialize function and pass the options for the plugin when
+// instantiating a new collection.
 processCollection.configure(pollOptions);
 processCollection.startFetching();
 ```
@@ -74,12 +78,12 @@ var options = {
 }
 ```
 
-refresh: refresh rate in milliseconds. Default value is 1000 milliseconds.
-doneFetchCallback: callback function to execute each time a fetch request finishes successfully.
-failedFetchCallback: callback function to execute each time a fetch request fails.
-failedFetchCallback: callback function to execute each time a fetch request fails.
-fetchOptions: to be passed in the collection.fetch() request (same options as the backbone collection’s fetch method).
-retryRequestOnFetchFail: specify if the plugin should retry the request if fails or if it should simply stop fetching data.
+* refresh: refresh rate in milliseconds. Default value is 1000 milliseconds.
+* doneFetchCallback: callback function to execute each time a fetch request finishes successfully.
+* failedFetchCallback: callback function to execute each time a fetch request fails.
+* failedFetchCallback: callback function to execute each time a fetch request fails.
+* fetchOptions: to be passed in the collection.fetch() request (same options as the backbone collection’s fetch method).
+* retryRequestOnFetchFail: specify if the plugin should retry the request if fails or if it should simply stop fetching data.
 
 ## Events
 
@@ -87,6 +91,7 @@ retryRequestOnFetchFail: specify if the plugin should retry the request if fails
 
 ## Methods
 
+* configure(options): specify custom options for the plugin
 * startFetching: starts polling data from the server.
 * stopFetching: stops fetching data from the server.
 * resetFetching: resets the collection and restarts fetching if the collection was already fetching
