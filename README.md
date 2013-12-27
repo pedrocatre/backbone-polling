@@ -1,4 +1,4 @@
-Backbone-Poll-Collection
+Backbone-Polling
 ==============
 [![Build Status](https://travis-ci.org/pedrocatre/backbone-poll-collection.png)](https://travis-ci.org/pedrocatre/backbone-poll-collection)
 
