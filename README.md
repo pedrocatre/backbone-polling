@@ -1,6 +1,6 @@
 Backbone-Polling
 ==============
-[![Build Status](https://travis-ci.org/pedrocatre/backbone-poll-collection.png)](https://travis-ci.org/pedrocatre/backbone-poll-collection)
+[![Build Status](https://travis-ci.org/pedrocatre/backbone-polling.png)](https://travis-ci.org/pedrocatre/backbone-polling)
 
 A simple plugin to give poll capabilities to backbone collections that uses a refresh rate to actively fetch data and keep the collection updated. In other words, it gives a backbone collection the ability to periodically query a data source.
 Useful for fetching dynamic data for monitoring.
