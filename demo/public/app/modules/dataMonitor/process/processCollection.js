@@ -4,9 +4,9 @@
 define([
     'backbone',
     'underscore',
-    'backbonePollCollection',
+    'backbonePolling',
     'processModel'
-], function (Backbone, _, BackbonePollCollection, ProcessModel) {
+], function (Backbone, _, BackbonePolling, ProcessModel) {
     'use strict';
 
     var ProcessCollection = Backbone.Collection.extend({
@@ -16,7 +16,7 @@ define([
     });
 
     // Add backbone polling mixin
-    _.extend(ProcessCollection.prototype, BackbonePollCollection);
+    _.extend(ProcessCollection.prototype, BackbonePolling);
 
     return ProcessCollection;
 });

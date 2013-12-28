@@ -14,7 +14,7 @@ require.config({
         gauge: '../libs/gauge/gauge.min',
 
         // PollCollection backbone plugin
-        backbonePollCollection: '../libs/backbone-polling/backbone-polling',
+        backbonePolling: '../libs/backbone-polling/backbone-polling',
 
         //// app
 

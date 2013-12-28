@@ -23,8 +23,8 @@ One possible usage is to create a backbone collection (or model) and add the plu
 define([
     'backbone',
     'underscore',
-    'backbonePollCollection',
-], function (Backbone, _, BackbonePollCollection) {
+    'backbonePolling',
+], function (Backbone, _, BackbonePolling) {
     'use strict';
 
     var ProcessCollection = Backbone.Collection.extend({
@@ -32,7 +32,7 @@ define([
     });
 
     // Add backbone polling mixin
-    _.extend(ProcessCollection.prototype, BackbonePollCollection);
+    _.extend(ProcessCollection.prototype, BackbonePolling);
 
     return ProcessCollection;
 });
@@ -112,7 +112,7 @@ require.config({
         //...
 
         // PollCollection backbone plugin
-        backbonePollCollection: '../backbone-polling',
+        backbonePolling: '../backbone-polling',
 
         //...
     }

@@ -3,8 +3,8 @@
  */
 define(['backbone',
     'underscore',
-    'backbonePollCollection'
-], function (Backbone, _, BackbonePollCollection) {
+    'backbonePolling'
+], function (Backbone, _, BackbonePolling) {
     'use strict';
 
     var PollingModel =  Backbone.Model.extend({
@@ -19,7 +19,7 @@ define(['backbone',
     });
 
     // Add backbone polling mixin
-    _.extend(PollingModel.prototype, BackbonePollCollection);
+    _.extend(PollingModel.prototype, BackbonePolling);
 
     return PollingModel;
 });
