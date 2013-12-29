@@ -111,7 +111,7 @@ require.config({
     paths: {
         //...
 
-        // PollCollection backbone plugin
+        // backbone polling plugin
         backbonePolling: '../backbone-polling',
 
         //...
