@@ -10,10 +10,17 @@
  * A simple plugin to give polling capabilities to backbone collections that uses a refresh rate to actively fetch data
  * from the server. Useful for fetching dynamic data for monitoring.
  */
-define([
-    'underscore',
-    'jquery'
-], function (_, $) {
+(function (root, factory) {
+    'use strict';
+
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['underscore', 'jquery'], factory);
+    } else {
+        // Browser globals
+        root.BackbonePolling = factory(root._, root.jQuery);
+    }
+}(this, function (_, $) {
     'use strict';
 
     return {
@@ -110,4 +117,4 @@ define([
         }
 
     };
-});
+}));
