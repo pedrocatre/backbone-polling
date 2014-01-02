@@ -38,10 +38,10 @@ describe('Backbone Polling Methods', function() {
 
         this.collection.configure({
             refresh: 10,
-            doneFetchCallback: function(){
+            done: function(){
                 continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing);
             },
-            alwaysCallback: callback
+            always: callback
         });
         this.collection.startFetching();
 
@@ -76,9 +76,9 @@ describe('Backbone Polling Methods', function() {
 
         this.collection.configure({
             refresh: 10,
-            doneFetchCallback: callbackDone,
-            failedFetchCallback: callbackFail,
-            alwaysCallback: function() {
+            done: callbackDone,
+            fail: callbackFail,
+            always: function() {
                 continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing);
             }
         });

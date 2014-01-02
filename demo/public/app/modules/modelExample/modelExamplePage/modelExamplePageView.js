@@ -22,13 +22,13 @@ define(['backbone',
             // Setup some example options for the Backbone Polling plugin
             var pollOptions = {
                 refresh: 2000,
-                doneFetchCallback: function() {
+                done: function() {
                     console.log('Done with the fetch request');
                 },
-                failedFetchCallback: function() {
+                fail: function() {
                     console.log('Had a problem requesting from the server. Going to keep trying.');
                 },
-                alwaysCallback: function() {
+                always: function() {
                     console.log('Finished another fetch request');
                 }
             };

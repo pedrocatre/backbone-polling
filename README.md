@@ -67,13 +67,13 @@ Or pass in some options first:
 ```javascript
 var pollOptions = {
     refresh: 2000,
-    doneFetchCallback: function() {
+    done: function() {
         console.log('Done with the fetch request');
     },
-    failedFetchCallback: function() {
+    fail: function() {
         console.log('Had a problem requesting from the server. Going to keep trying.');
     },
-    alwaysCallback: function() {
+    always: function() {
         console.log('Finished another fetch request');
     }
 };
@@ -92,19 +92,19 @@ An object can be used to customize the plugin’s behavior. All configurations a
 
 ```javascript
 var options = {
-    refresh: 1000,                          // rate at which the plugin fetches data
-    doneFetchCallback: function() {},       // handler to be called when the Deferred object is resolved
-    failedFetchCallback: function() {},     // handler to be called when the Deferred object is rejected
-    alwaysCallback: function() {},          // handler that is always called when the fetch request finishes
-    fetchOptions: {},                       // options for the fetch request
-    retryRequestOnFetchFail: true           // automatically retry request on fetch failure
+    refresh: 1000,                   // rate at which the plugin fetches data
+    done: function() {},             // handler to be called when the Deferred object is resolved
+    fail: function() {},             // handler to be called when the Deferred object is rejected
+    always: function() {},           // handler that is always called when the fetch request finishes
+    fetchOptions: {},                // options for the fetch request
+    retryRequestOnFetchFail: true    // automatically retry request on fetch failure
 }
 ```
 
 * refresh: refresh rate in milliseconds. Default value is 1000 milliseconds.
-* doneFetchCallback: callback function to execute each time a fetch request finishes successfully.
-* failedFetchCallback: callback function to execute each time a fetch request fails.
-* failedFetchCallback: callback function to execute each time a fetch request fails.
+* done: callback function to execute each time a fetch request finishes successfully.
+* fail: callback function to execute each time a fetch request fails.
+* always: callback function to execute each time a fetch request finishes.
 * fetchOptions: to be passed in the collection.fetch() request (same options as the backbone collection’s fetch method).
 * retryRequestOnFetchFail: specify if the plugin should retry the request if fails or if it should simply stop fetching data.
 

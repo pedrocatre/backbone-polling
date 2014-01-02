@@ -33,9 +33,9 @@
 
         settings: {
             refresh: 1000,                          // rate at which the plugin fetches data
-            doneFetchCallback: function() {},       // handler to be called when the Deferred object is resolved
-            failedFetchCallback: function() {},     // handler to be called when the Deferred object is rejected
-            alwaysCallback: function() {},          // handler that is always called when the fetch request finishes
+            done: function() {},       // handler to be called when the Deferred object is resolved
+            fail: function() {},     // handler to be called when the Deferred object is rejected
+            always: function() {},          // handler that is always called when the fetch request finishes
             fetchOptions: {},                       // options for the fetch request
             retryRequestOnFetchFail: true           // automatically retry request on fetch failure
         },
@@ -59,18 +59,18 @@
                 self.fetchRequest = self.fetch(self.settings.fetchOptions);
 
                 self.fetchRequest.done(function() {
-                    self._setupCallback('doneFetchCallback', arguments);
+                    self._setupCallback('done', arguments);
                     self.trigger('finishedFetch');
                     self._refresh(self.settings.refresh);
                 }).fail(function() {
-                        self._setupCallback('failedFetchCallback', arguments);
+                        self._setupCallback('fail', arguments);
 
                         // If retryRequestOnFetchFail is true automatically retry request
                         if(self.settings.retryRequestOnFetchFail) {
                             self._refresh(self.settings.refresh);
                         }
                     }).always(function() {
-                        self._setupCallback('alwaysCallback', arguments);
+                        self._setupCallback('always', arguments);
                     });
             }, length );
             return this;
@@ -79,7 +79,7 @@
         /**
          * Helper function for calling handlers
          * @param callbackCodeName is the name of the handler setting whose callback we want to
-         * execute (ex: doneFetchCallback)
+         * execute (ex: done)
          * @returns {*}
          * @private
          */
