@@ -2,6 +2,12 @@
 
 module.exports = function(grunt) {
 
+    var testLibs = [
+        'tests/libs/jquery/jquery.js',
+        'tests/libs/underscore/underscore.js',
+        'tests/libs/backbone/backbone.js'
+    ];
+
     // Project configuration.
     grunt.initConfig({
         // Metadata.
@@ -42,7 +48,8 @@ module.exports = function(grunt) {
             backbonePolling: {
                 src: 'src/backbone-polling.js',
                 options: {
-                    specs: 'tests/specs/*Spec.js',
+                    vendor: testLibs,
+                    specs: 'tests/specs/*-spec.js',
                     template: require('grunt-template-jasmine-istanbul'),
                     templateOptions: {
                         coverage: 'bin/coverage/coverage.json',
@@ -59,7 +66,8 @@ module.exports = function(grunt) {
             backbonePollingMin: {
                 src: 'dist/backbone-polling-min.js',
                 options: {
-                    specs: 'tests/specs/*Spec.js'
+                    vendor: testLibs,
+                    specs: 'tests/specs/*-spec.js'
                 }
             }
         }
