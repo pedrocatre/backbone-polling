@@ -1,6 +1,6 @@
 /**
  *
- * backbone-polling v0.0.1
+ * backbone-polling v1.0.0
  * https://github.com/pedrocatre/backbone-polling
  *
  * Copyright (c) 2013 Pedro Catré

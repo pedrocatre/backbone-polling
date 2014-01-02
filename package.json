@@ -1,6 +1,6 @@
 {
   "name": "backbone-polling",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A simple plugin to give poll capabilities to backbone collections that uses a refresh rate to actively fetch data and keep the collection updated. In other words, it gives a backbone collection the ability to periodically query a data source. Useful for fetching dynamic data for monitoring.",
   "scripts": {
     "test": "grunt --verbose"
