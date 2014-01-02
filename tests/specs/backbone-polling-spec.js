@@ -19,11 +19,20 @@ describe('Backbone Polling Methods', function() {
     });
 
     afterEach(function() {
+        this.collection.stopFetching();
+        this.model.stopFetching();
         delete this.model;
         delete this.collection;
     });
 
-    it('can start fetching', function() {
+    it('can stop start and stop fetching', function() {
+        this.collection.startFetching();
+        expect(this.collection.isFetching()).toBe(true);
+        this.collection.stopFetching();
+        expect(this.collection.isFetching()).toBe(false);
+    });
+
+    it('can query the data source multiple times', function() {
         var counter = 1;
         var continueFlag = false;
         var numberOfTimesToCallBeforeContinuing = 3;
@@ -95,6 +104,77 @@ describe('Backbone Polling Methods', function() {
             expect(callbackDone.callCount).toBe(2);
             expect(callbackFail.callCount).toBe(1);
         });
+    });
+
+    it('can automatically retry a failed fetch', function() {
+        var counter = 1;
+        var continueFlag = false;
+        var numberOfTimesToCallBeforeContinuing = 2;
+
+        spyOn(this.collection, 'fetch').andCallFake(function() {
+            var dfd = $.Deferred();
+            dfd.reject();
+            return dfd.promise();
+        });
+
+        var callbackFail = jasmine.createSpy();
+
+        this.collection.configure({
+            refresh: 10,
+            fail: callbackFail,
+            always: function() {
+                continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing);
+            },
+            retryRequestOnFetchFail: true
+        });
+        this.collection.startFetching();
+
+        waitsFor(function(){
+            return continueFlag;
+        });
+
+        runs(function () {
+            expect(this.collection.isFetching()).toBe(true);
+            expect(callbackFail).toHaveBeenCalled();
+            expect(callbackFail.callCount).toBe(numberOfTimesToCallBeforeContinuing);
+        });
+    });
+
+    it('can disable an automatic retry of a failed fetch', function() {
+        var self = this;
+        var counter = 1;
+        var continueFlag = false;
+        var numberOfTimesToCallBeforeContinuing = 2;
+
+        spyOn(this.collection, 'fetch').andCallFake(function() {
+            var dfd = $.Deferred();
+            dfd.reject();
+            return dfd.promise();
+        });
+
+        var callbackFail = jasmine.createSpy();
+
+        this.collection.configure({
+            refresh: 10,
+            fail: callbackFail,
+            always: function() {
+                continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing) ||
+                    (self.collection.isFetching() === false);
+            },
+            retryRequestOnFetchFail: false
+        });
+        this.collection.startFetching();
+
+        waitsFor(function(){
+            return continueFlag;
+        });
+
+        runs(function () {
+            expect(this.collection.isFetching()).toBe(false);
+            expect(callbackFail).toHaveBeenCalled();
+            expect(callbackFail.callCount).toBe(1);
+        });
+
     });
 
 });

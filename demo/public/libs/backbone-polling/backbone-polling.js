@@ -68,6 +68,8 @@
                         // If retryRequestOnFetchFail is true automatically retry request
                         if(self.settings.retryRequestOnFetchFail) {
                             self._refresh(self.settings.refresh);
+                        } else {
+                            self.stopFetching();
                         }
                     }).always(function() {
                         self._setupCallback('always', arguments);
@@ -95,7 +97,7 @@
         },
 
         abortPendingFetchRequests: function() {
-            if(!_.isUndefined(this.fetchRequest)) {
+            if(!_.isUndefined(this.fetchRequest) && !_.isUndefined(this.fetchRequest['abort'])) {
                 this.fetchRequest.abort();
             }
             return this;
