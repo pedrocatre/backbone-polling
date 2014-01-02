@@ -92,12 +92,12 @@ An object can be used to customize the plugin’s behavior. All configurations a
 
 ```javascript
 var options = {
-    refresh: 1000,                   // rate at which the plugin fetches data
-    done: function() {},             // handler to be called when the Deferred object is resolved
-    fail: function() {},             // handler to be called when the Deferred object is rejected
-    always: function() {},           // handler that is always called when the fetch request finishes
-    fetchOptions: {},                // options for the fetch request
-    retryRequestOnFetchFail: true    // automatically retry request on fetch failure
+    refresh: 1000,                 // rate at which the plugin fetches data
+    done: function() {},           // handler to be called when the Deferred object is resolved
+    fail: function() {},           // handler to be called when the Deferred object is rejected
+    always: function() {},         // handler that is always called when the fetch request finishes
+    fetchOptions: {},              // options for the fetch request
+    retryRequestOnFetchFail: true  // automatically retry request on fetch failure
 }
 ```
 
