@@ -15,9 +15,26 @@ Production: [backbone-polling.min.js](https://raw.github.com/pedrocatre/backbone
 
 http://aqueous-badlands-8314.herokuapp.com
 
+## Dependencies
+
+This plugin uses backbone (v1.0.0 or above) , jQuery (v1.10.2 or above) and underscore (version 1.3.3 or above).
+
 ## Usage
 
 One possible usage is to create a backbone collection (or model) and add the plugin as a mixin.
+
+* Example without AMD
+
+```javascript
+var ProcessCollection = Backbone.Collection.extend({
+    url: '/processes',
+});
+
+// Add backbone polling mixin
+_.extend(ProcessCollection.prototype, BackbonePolling);
+```
+
+* Example with AMD
 
 ```javascript
 define([
@@ -101,23 +118,6 @@ var options = {
 * startFetching: starts polling data from the server.
 * stopFetching: stops fetching data from the server.
 * isFetching: returns true if the collection is fetching data and false otherwise.
-
-## Installation
-
-To install, include the `backbone-polling.js` file in your project and add its path to require.config (if you are using requireJS).
-
-```javascript
-require.config({
-    paths: {
-        //...
-
-        // backbone polling plugin
-        backbonePolling: '../backbone-polling',
-
-        //...
-    }
-});
-```
 
 ## License
 
