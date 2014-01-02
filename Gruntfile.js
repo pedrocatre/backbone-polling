@@ -37,6 +37,31 @@ module.exports = function(grunt) {
                 src: 'dist/<%= pkg.name %>.js',
                 dest: 'dist/<%= pkg.name %>.min.js'
             }
+        },
+        jasmine: {
+            backbonePolling: {
+                src: 'src/backbone-polling.js',
+                options: {
+                    specs: 'tests/specs/*Spec.js',
+                    template: require('grunt-template-jasmine-istanbul'),
+                    templateOptions: {
+                        coverage: 'bin/coverage/coverage.json',
+                        report: 'bin/coverage'//,
+//                        thresholds: {
+//                            lines: 75,
+//                            statements: 75,
+//                            branches: 75,
+//                            functions: 90
+//                        }
+                    }
+                }
+            },
+            backbonePollingMin: {
+                src: 'dist/backbone-polling-min.js',
+                options: {
+                    specs: 'tests/specs/*Spec.js'
+                }
+            }
         }
     });
 
@@ -44,6 +69,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-jasmine');
 
     grunt.registerTask('sync-src-and-demo',
         'Copies the current version of the source file to the demo lib',
@@ -62,6 +88,6 @@ module.exports = function(grunt) {
         });
 
     // Default task.
-    grunt.registerTask('default', ['jshint', 'clean', 'sync-src-and-dist', 'uglify', 'sync-src-and-demo']);
+    grunt.registerTask('default', ['jshint', 'clean', 'sync-src-and-dist', 'uglify', 'sync-src-and-demo', 'jasmine']);
 
 };
