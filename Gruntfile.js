@@ -46,7 +46,7 @@ module.exports = function(grunt) {
         },
         jasmine: {
             backbonePolling: {
-                src: 'src/backbone-polling.js',
+                src: ['src/backbone-polling.js'],
                 options: {
                     vendor: testLibs,
                     specs: 'tests/specs/*-spec.js',
@@ -62,14 +62,14 @@ module.exports = function(grunt) {
 //                        }
                     }
                 }
-            },
-            backbonePollingMin: {
-                src: 'dist/backbone-polling-min.js',
-                options: {
-                    vendor: testLibs,
-                    specs: 'tests/specs/*-spec.js'
-                }
-            }
+            }//,
+//            backbonePollingMin: {
+//                src: ['dist/backbone-polling-min.js'],
+//                options: {
+//                    vendor: testLibs,
+//                    specs: 'tests/specs/*-spec.js'
+//                }
+//            }
         }
     });
 
