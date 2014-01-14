@@ -17,6 +17,11 @@ describe('Backbone Polling Methods', function() {
         _.extend(this.BackboneModel.prototype, window.BackbonePolling);
         this.model = new this.BackboneModel();
 
+        /**
+         * Helper function that creates a spy and associates it with the collection being tested and a plugin event
+         * @param eventName the name of the event that will call the spy
+         * @returns {*}
+         */
         this.createSpyForPluginEvent = function(eventName) {
             var callbackForEvent = jasmine.createSpy();
             this.collection.listenTo(this.collection, eventName, callbackForEvent);
@@ -31,8 +36,6 @@ describe('Backbone Polling Methods', function() {
         delete this.model;
         delete this.collection;
     });
-
-
 
     it('can stop start and stop fetching', function() {
         this.collection.startFetching();
