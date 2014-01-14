@@ -27,7 +27,7 @@
         /**
          * Control variable used to stop fetch requests
          */
-        doFetchRequest: false,
+        _backbonePollEnabled: false,
 
         /**
          * Default settings for the plugin
@@ -51,7 +51,7 @@
          * @returns {*}
          */
         startFetching: function() {
-            this.doFetchRequest = true;
+            this._backbonePollEnabled = true;
             this._refresh(1);
             return this;
         },
@@ -68,7 +68,7 @@
 
                 // Return if _refresh was called but the fetching is stopped
                 // should not go this far since the timeout is cleared when fetching is stopped.
-                if(!this.doFetchRequest) { return; }
+                if(!this._backbonePollEnabled) { return; }
 
                 this.fetchRequest = this.fetch(this._backbonePollSettings.fetchOptions);
 
@@ -115,7 +115,7 @@
          * @returns {*}
          */
         stopFetching: function() {
-            this.doFetchRequest = false;
+            this._backbonePollEnabled = false;
             if(this.isFetching()) {
                 clearTimeout(this._timeoutId);
                 this._timeoutId = undefined;
