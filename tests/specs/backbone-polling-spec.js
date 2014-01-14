@@ -39,7 +39,7 @@ describe('Backbone Polling Methods', function() {
         delete this.collection;
     });
 
-    it('can stop start and stop fetching', function() {
+    it('can start and stop fetching', function() {
         this.collection.startFetching();
         expect(this.collection.isFetching()).toBe(true);
         this.collection.stopFetching();
