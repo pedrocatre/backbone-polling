@@ -25,6 +25,12 @@
     return {
 
         /**
+         * Id returned by the setTimeout function that the plugin uses to specify a delay between fetch requests to the
+         * data source
+         */
+        _backbonePollTimeoutId: undefined,
+
+        /**
          * Control variable used to stop fetch requests
          */
         _backbonePollEnabled: false,
@@ -63,8 +69,8 @@
          * @private
          */
         _refresh: function (refreshRateMs) {
-            this._timeoutId = setTimeout(_.bind(function() {
-                clearTimeout(this._timeoutId);
+            this._backbonePollTimeoutId = setTimeout(_.bind(function() {
+                clearTimeout(this._backbonePollTimeoutId);
 
                 // Return if _refresh was called but the fetching is stopped
                 // should not go this far since the timeout is cleared when fetching is stopped.
@@ -107,7 +113,7 @@
          * @returns {boolean} true if is fetching, false if it is not fetching
          */
         isFetching: function() {
-            return !(_.isUndefined(this._timeoutId));
+            return !(_.isUndefined(this._backbonePollTimeoutId));
         },
 
         /**
@@ -117,8 +123,8 @@
         stopFetching: function() {
             this._backbonePollEnabled = false;
             if(this.isFetching()) {
-                clearTimeout(this._timeoutId);
-                this._timeoutId = undefined;
+                clearTimeout(this._backbonePollTimeoutId);
+                this._backbonePollTimeoutId = undefined;
             }
             this.abortPendingFetchRequests();
             return this;
