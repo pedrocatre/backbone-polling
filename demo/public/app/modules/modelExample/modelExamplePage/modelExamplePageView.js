@@ -20,18 +20,7 @@ define(['backbone',
             this.modelExamplePageTemplate = Handlebars.compile(ModelExamplePageTemplate);
 
             // Setup some example options for the Backbone Polling plugin
-            var pollOptions = {
-                refresh: 2000,
-                done: function() {
-                    console.log('Done with the fetch request');
-                },
-                fail: function() {
-                    console.log('Had a problem requesting from the server. Going to keep trying.');
-                },
-                always: function() {
-                    console.log('Finished another fetch request');
-                }
-            };
+            var pollOptions = { refresh: 2000 };
             this.pollingModel = new PollingModel();
             this.pollingModel.configure(pollOptions);
             MasterView.prototype.initialize.apply(this);

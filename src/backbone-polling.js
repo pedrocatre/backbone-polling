@@ -42,9 +42,6 @@
          */
         _backbonePollSettings: {
             refresh: 1000,                      // rate at which the plugin fetches data
-            done: function() {},                // handler to be called when the Deferred object is resolved
-            fail: function() {},                // handler to be called when the Deferred object is rejected
-            always: function() {},              // handler that is always called when the fetch request finishes
             fetchOptions: {},                   // options for the fetch request
             retryRequestOnFetchFail: true       // automatically retry request on fetch failure
         },
@@ -78,11 +75,10 @@
                 self.fetchRequest = self.fetch(self._backbonePollSettings.fetchOptions);
 
                 self.fetchRequest.done(function() {
-                    self._setupCallback('done', arguments);
-                    self.trigger('finishedFetch');
+                    self.trigger('refresh:done');
                     self._refresh(self._backbonePollSettings.refresh);
                 }).fail(function() {
-                        self._setupCallback('fail', arguments);
+                        self.trigger('refresh:fail');
 
                         // If retryRequestOnFetchFail is true automatically retry request
                         if(self._backbonePollSettings.retryRequestOnFetchFail) {
@@ -91,27 +87,9 @@
                             self.stopFetching();
                         }
                     }).always(function() {
-                        self._setupCallback('always', arguments);
+                        self.trigger('refresh:always');
                     });
             }, refreshRateMs );
-            return this;
-        },
-
-        /**
-         * Helper function for calling handlers
-         * @param callbackCodeName is the name of the handler setting whose callback we want to
-         * execute (ex: done)
-         * @returns {*}
-         * @private
-         */
-        _setupCallback: function(callbackCodeName) {
-            // Get the callback function
-            var callback = this._backbonePollSettings[callbackCodeName];
-
-            if(_.isFunction(callback)) {
-                // First argument is the callbackCodeName, so don't send that
-                callback.apply(this, _.rest(arguments, 1));
-            }
             return this;
         },
 

@@ -21,6 +21,7 @@ describe('Backbone Polling Methods', function() {
     afterEach(function() {
         this.collection.stopFetching();
         this.model.stopFetching();
+        this.collection.stopListening();
         delete this.model;
         delete this.collection;
     });
@@ -45,13 +46,14 @@ describe('Backbone Polling Methods', function() {
 
         var callback = jasmine.createSpy();
 
-        this.collection.configure({
-            refresh: 10,
-            done: function(){
-                continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing);
-            },
-            always: callback
+        this.collection.configure({ refresh: 10 });
+
+        this.collection.listenTo(this.collection, 'refresh:done', function() {
+            continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing);
         });
+
+        this.collection.listenTo(this.collection, 'refresh:always', callback);
+
         this.collection.startFetching();
 
         waitsFor(function(){
@@ -83,14 +85,16 @@ describe('Backbone Polling Methods', function() {
         var callbackFail = jasmine.createSpy();
         var callbackDone = jasmine.createSpy();
 
-        this.collection.configure({
-            refresh: 10,
-            done: callbackDone,
-            fail: callbackFail,
-            always: function() {
-                continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing);
-            }
+        this.collection.configure({ refresh: 10 });
+
+        this.collection.listenTo(this.collection, 'refresh:done', callbackDone);
+
+        this.collection.listenTo(this.collection, 'refresh:fail', callbackFail);
+
+        this.collection.listenTo(this.collection, 'refresh:always', function() {
+            continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing);
         });
+
         this.collection.startFetching();
 
         waitsFor(function(){
@@ -121,12 +125,15 @@ describe('Backbone Polling Methods', function() {
 
         this.collection.configure({
             refresh: 10,
-            fail: callbackFail,
-            always: function() {
-                continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing);
-            },
             retryRequestOnFetchFail: true
         });
+
+        this.collection.listenTo(this.collection, 'refresh:fail', callbackFail);
+
+        this.collection.listenTo(this.collection, 'refresh:always', function() {
+            continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing);
+        });
+
         this.collection.startFetching();
 
         waitsFor(function(){
@@ -156,13 +163,16 @@ describe('Backbone Polling Methods', function() {
 
         this.collection.configure({
             refresh: 10,
-            fail: callbackFail,
-            always: function() {
-                continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing) ||
-                    (self.collection.isFetching() === false);
-            },
             retryRequestOnFetchFail: false
         });
+
+        this.collection.listenTo(this.collection, 'refresh:fail', callbackFail);
+
+        this.collection.listenTo(this.collection, 'refresh:always', function() {
+            continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing) ||
+                (self.collection.isFetching() === false);
+        });
+
         this.collection.startFetching();
 
         waitsFor(function(){

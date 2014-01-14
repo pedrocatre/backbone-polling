@@ -20,20 +20,21 @@ define(['backbone',
             this.dataMonitorPageBodyTemplate = Handlebars.compile(DataMonitorPageBodyTemplate);
 
             // Setup some example options for the Backbone Polling plugin
-            var pollOptions = {
-                refresh: 2000,
-                done: function() {
-                    console.log('Done with the fetch request');
-                },
-                fail: function() {
-                    console.log('Had a problem requesting from the server. Going to keep trying.');
-                },
-                always: function() {
-                    console.log('Finished another fetch request');
-                }
-            };
+            var pollOptions = { refresh: 2000 };
             this.processCollection = new ProcessCollection();
             this.processCollection.configure(pollOptions);
+
+            // Add some listeners to the events that the plugin triggers
+            this.listenTo(this.processCollection, 'refresh:done', function() {
+                console.log('Done with the fetch request');
+            });
+            this.listenTo(this.processCollection, 'refresh:fail', function() {
+                console.log('Had a problem requesting from the server. Going to keep trying.');
+            });
+            this.listenTo(this.processCollection, 'refresh:always', function() {
+                console.log('Finished another fetch request');
+            });
+
             MasterView.prototype.initialize.apply(this);
             return this;
         },
