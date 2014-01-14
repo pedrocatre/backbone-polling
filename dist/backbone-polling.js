@@ -68,7 +68,7 @@
 
                 // Return if _refresh was called but the fetching is stopped
                 // should not go this far since the timeout is cleared when fetching is stopped.
-                if(!this.doFetchRequest) { return this; }
+                if(!this.doFetchRequest) { return; }
 
                 this.fetchRequest = this.fetch(this._backbonePollSettings.fetchOptions);
 
