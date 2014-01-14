@@ -336,7 +336,38 @@
 118
 119
 120
-121</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -366,6 +397,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -379,9 +416,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5</span>
 <span class="cline-any cline-yes">5</span>
 <span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -435,6 +485,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">12</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -442,7 +496,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -482,13 +544,22 @@
 &nbsp;
     return {
 &nbsp;
-        // Variable that controls stopping the fetch requests
+        /**
+         * Control variable used to stop fetch requests
+         */
         doFetchRequest: false,
 &nbsp;
+        /**
+         * Specify custom options for the plugin
+         * @param pollOptions object used to customize the plugin’s behavior
+         */
         configure: function(pollOptions){
             this._backbonePollSettings = $.extend(true, {}, this._backbonePollSettings, pollOptions);
         },
 &nbsp;
+        /**
+         * Default settings for the plugin
+         */
         _backbonePollSettings: {
             refresh: 1000,                      // rate at which the plugin fetches data
             done: <span class="fstat-no" title="function not covered" >function() {</span>},                // handler to be called when the Deferred object is resolved
@@ -498,12 +569,22 @@
             retryRequestOnFetchFail: true       // automatically retry request on fetch failure
         },
 &nbsp;
+        /**
+         * Starts the process of polling data from the server
+         * @returns {*}
+         */
         startFetching: function() {
             this.doFetchRequest = true;
             this._refresh(1);
             return this;
         },
 &nbsp;
+        /**
+         * Periodically fetch data from a data source
+         * @param refreshRateMs rate in milliseconds at which the plugin fetches data
+         * @returns {*}
+         * @private
+         */
         _refresh: function (refreshRateMs) {
             var self = this;
 &nbsp;
@@ -554,6 +635,10 @@
             return this;
         },
 &nbsp;
+        /**
+         * Abort pending fetch requests
+         * @returns {*}
+         */
         abortPendingFetchRequests: function() {
             <span class="missing-if-branch" title="if path not taken" >I</span>if(!_.isUndefined(this.fetchRequest) &amp;&amp; !_.isUndefined(this.fetchRequest['abort'])) {
 <span class="cstat-no" title="statement not covered" >                this.fetchRequest.abort();</span>
@@ -561,10 +646,18 @@
             return this;
         },
 &nbsp;
+        /**
+         * Checks to see if the plugin is polling data from a data source
+         * @returns {boolean} true if is fetching, false if it is not fetching
+         */
         isFetching: function() {
             return !(_.isUndefined(this.timeout));
         },
 &nbsp;
+        /**
+         * Stops the process of polling data from the server
+         * @returns {*}
+         */
         stopFetching: function() {
             this.doFetchRequest = false;
             if(this.isFetching()) {
@@ -581,7 +674,7 @@
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jan 14 2014 15:14:47 GMT+0000 (GMT Standard Time)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jan 14 2014 15:37:28 GMT+0000 (GMT Standard Time)</div>
 </div>
 
 <script src="../prettify.js"></script>
