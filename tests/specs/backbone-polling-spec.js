@@ -149,7 +149,6 @@ describe('Backbone Polling Methods', function() {
     });
 
     it('can disable an automatic retry of a failed fetch', function() {
-        var self = this;
         var counter = 1;
         var continueFlag = false;
         var numberOfTimesToCallBeforeContinuing = 2;
@@ -164,10 +163,10 @@ describe('Backbone Polling Methods', function() {
 
         var callbackFail = createSpyForPluginEvent(this.collection, 'refresh:fail');
 
-        this.collection.listenTo(this.collection, 'refresh:always', function() {
+        this.collection.listenTo(this.collection, 'refresh:always', _.bind(function() {
             continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing) ||
-                (self.collection.isFetching() === false);
-        });
+                (this.collection.isFetching() === false);
+        }, this));
 
         this.collection.startFetching();
 
