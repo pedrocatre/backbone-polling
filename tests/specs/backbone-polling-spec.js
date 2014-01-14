@@ -57,8 +57,6 @@ describe('Backbone Polling Methods', function() {
             return dfd.promise();
         });
 
-
-
         this.collection.configure({ refresh: 10 });
 
         this.collection.listenTo(this.collection, 'refresh:done', function() {
