@@ -1,5 +1,18 @@
 describe('Backbone Polling Methods', function() {
 
+    /**
+     * Helper function that creates a spy and associates it with an object mixed with the backbone polling plugin and a
+     * plugin event
+     * @param objectMixedWithPlugin the object mixed with the plugin
+     * @param eventName the name of the event that when triggered will call the spy
+     * @returns {*}
+     */
+    var createSpyForPluginEvent = function(objectMixedWithPlugin, eventName) {
+        var callbackForEvent = jasmine.createSpy();
+        objectMixedWithPlugin.listenTo(objectMixedWithPlugin, eventName, callbackForEvent);
+        return callbackForEvent;
+    };
+
     beforeEach(function() {
         this.BackboneCollection = Backbone.Collection.extend({
             url: '/processes'
@@ -16,17 +29,6 @@ describe('Backbone Polling Methods', function() {
         // Add backbone polling mixin
         _.extend(this.BackboneModel.prototype, window.BackbonePolling);
         this.model = new this.BackboneModel();
-
-        /**
-         * Helper function that creates a spy and associates it with the collection being tested and a plugin event
-         * @param eventName the name of the event that will call the spy
-         * @returns {*}
-         */
-        this.createSpyForPluginEvent = function(eventName) {
-            var callbackForEvent = jasmine.createSpy();
-            this.collection.listenTo(this.collection, eventName, callbackForEvent);
-            return callbackForEvent;
-        };
     });
 
     afterEach(function() {
@@ -63,7 +65,7 @@ describe('Backbone Polling Methods', function() {
             continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing);
         });
 
-        var callbackAlways = this.createSpyForPluginEvent('refresh:always');
+        var callbackAlways = createSpyForPluginEvent(this.collection, 'refresh:always');
 
         this.collection.startFetching();
 
@@ -95,8 +97,8 @@ describe('Backbone Polling Methods', function() {
 
         this.collection.configure({ refresh: 10 });
 
-        var callbackFail = this.createSpyForPluginEvent('refresh:fail');
-        var callbackDone = this.createSpyForPluginEvent('refresh:done');
+        var callbackFail = createSpyForPluginEvent(this.collection, 'refresh:fail');
+        var callbackDone = createSpyForPluginEvent(this.collection, 'refresh:done');
 
         this.collection.listenTo(this.collection, 'refresh:always', function() {
             continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing);
@@ -133,7 +135,7 @@ describe('Backbone Polling Methods', function() {
             retryRequestOnFetchFail: true
         });
 
-        var callbackFail = this.createSpyForPluginEvent('refresh:fail');
+        var callbackFail = createSpyForPluginEvent(this.collection, 'refresh:fail');
 
         this.collection.listenTo(this.collection, 'refresh:always', function() {
             continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing);
@@ -169,7 +171,7 @@ describe('Backbone Polling Methods', function() {
             retryRequestOnFetchFail: false
         });
 
-        var callbackFail = this.createSpyForPluginEvent('refresh:fail');
+        var callbackFail = createSpyForPluginEvent(this.collection, 'refresh:fail');
 
         this.collection.listenTo(this.collection, 'refresh:always', function() {
             continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing) ||
