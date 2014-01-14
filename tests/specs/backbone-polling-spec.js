@@ -42,14 +42,14 @@ describe('Backbone Polling Methods and Events', function() {
         delete this.collection;
     });
 
-    it('can start and stop fetching', function() {
+    it('should start and stop fetching', function() {
         this.collection.startFetching();
         expect(this.collection.isFetching()).toBe(true);
         this.collection.stopFetching();
         expect(this.collection.isFetching()).toBe(false);
     });
 
-    it('can query the data source multiple times', function() {
+    it('should query the data source multiple times', function() {
         var counter = 1;
         var continueFlag = false;
         var numberOfTimesToCallBeforeContinuing = 3;
@@ -79,7 +79,7 @@ describe('Backbone Polling Methods and Events', function() {
         });
     });
 
-    it('can configure callback functions', function() {
+    it('should configure callback functions', function() {
         var counter = 1;
         var continueFlag = false;
         var numberOfTimesToCallBeforeContinuing = 3;
@@ -118,7 +118,7 @@ describe('Backbone Polling Methods and Events', function() {
         });
     });
 
-    it('can automatically retry a failed fetch', function() {
+    it('should automatically retry a failed fetch', function() {
         var counter = 1;
         var continueFlag = false;
         var numberOfTimesToCallBeforeContinuing = 2;
@@ -148,7 +148,7 @@ describe('Backbone Polling Methods and Events', function() {
         });
     });
 
-    it('can disable an automatic retry of a failed fetch', function() {
+    it('should disable an automatic retry of a failed fetch', function() {
         var counter = 1;
         var continueFlag = false;
         var numberOfTimesToCallBeforeContinuing = 2;
