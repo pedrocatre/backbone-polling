@@ -28,7 +28,7 @@
         doFetchRequest: false,
 
         configure: function(pollOptions){
-            this._backbonePollSettings = $.extend( {}, this._backbonePollSettings, pollOptions );
+            this._backbonePollSettings = $.extend(true, {}, this._backbonePollSettings, pollOptions);
         },
 
         _backbonePollSettings: {
