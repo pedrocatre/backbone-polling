@@ -63,33 +63,31 @@
          * @private
          */
         _refresh: function (refreshRateMs) {
-            var self = this;
-
-            self.timeout = setTimeout(function() {
-                clearTimeout(self.timeout);
+            this.timeout = setTimeout(_.bind(function() {
+                clearTimeout(this.timeout);
 
                 // Return if _refresh was called but the fetching is stopped
                 // should not go this far since the timeout is cleared when fetching is stopped.
-                if(!self.doFetchRequest) { return self; }
+                if(!this.doFetchRequest) { return this; }
 
-                self.fetchRequest = self.fetch(self._backbonePollSettings.fetchOptions);
+                this.fetchRequest = this.fetch(this._backbonePollSettings.fetchOptions);
 
-                self.fetchRequest.done(function() {
-                    self.trigger('refresh:done');
-                    self._refresh(self._backbonePollSettings.refresh);
-                }).fail(function() {
-                        self.trigger('refresh:fail');
+                this.fetchRequest.done(_.bind(function() {
+                        this.trigger('refresh:done');
+                        this._refresh(this._backbonePollSettings.refresh);
+                    }, this)).fail(_.bind(function() {
+                        this.trigger('refresh:fail');
 
                         // If retryRequestOnFetchFail is true automatically retry request
-                        if(self._backbonePollSettings.retryRequestOnFetchFail) {
-                            self._refresh(self._backbonePollSettings.refresh);
+                        if(this._backbonePollSettings.retryRequestOnFetchFail) {
+                            this._refresh(this._backbonePollSettings.refresh);
                         } else {
-                            self.stopFetching();
+                            this.stopFetching();
                         }
-                    }).always(function() {
-                        self.trigger('refresh:always');
-                    });
-            }, refreshRateMs );
+                    }, this)).always(_.bind(function() {
+                        this.trigger('refresh:always');
+                    }, this));
+            }, this), refreshRateMs);
             return this;
         },
 
