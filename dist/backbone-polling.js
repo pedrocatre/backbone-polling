@@ -109,7 +109,7 @@
 
         stopFetching: function() {
             this.doFetchRequest = false;
-            if(_.isUndefined(this.timeout) === false) {
+            if(this.isFetching()) {
                 clearTimeout(this.timeout);
                 this.timeout = undefined;
             }
