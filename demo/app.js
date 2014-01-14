@@ -7,8 +7,6 @@ var express = require('express');
 var routes = require('./routes');
 var processes = require('./routes/process');
 var processItem = require('./routes/processItem');
-processesData = require('./data/processesData');
-processData = require('./data/processData');
 var http = require('http');
 var path = require('path');
 
