@@ -16,6 +16,12 @@ describe('Backbone Polling Methods', function() {
         // Add backbone polling mixin
         _.extend(this.BackboneModel.prototype, window.BackbonePolling);
         this.model = new this.BackboneModel();
+
+        this.createSpyForPluginEvent = function(eventName) {
+            var callbackForEvent = jasmine.createSpy();
+            this.collection.listenTo(this.collection, eventName, callbackForEvent);
+            return callbackForEvent;
+        };
     });
 
     afterEach(function() {
@@ -25,6 +31,8 @@ describe('Backbone Polling Methods', function() {
         delete this.model;
         delete this.collection;
     });
+
+
 
     it('can stop start and stop fetching', function() {
         this.collection.startFetching();
@@ -44,7 +52,7 @@ describe('Backbone Polling Methods', function() {
             return dfd.promise();
         });
 
-        var callback = jasmine.createSpy();
+
 
         this.collection.configure({ refresh: 10 });
 
@@ -52,7 +60,7 @@ describe('Backbone Polling Methods', function() {
             continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing);
         });
 
-        this.collection.listenTo(this.collection, 'refresh:always', callback);
+        var callbackAlways = this.createSpyForPluginEvent('refresh:always');
 
         this.collection.startFetching();
 
@@ -62,8 +70,8 @@ describe('Backbone Polling Methods', function() {
 
         runs(function () {
             expect(this.collection.isFetching()).toBe(true);
-            expect(callback).toHaveBeenCalled();
-            expect(callback.callCount).toBe(numberOfTimesToCallBeforeContinuing);
+            expect(callbackAlways).toHaveBeenCalled();
+            expect(callbackAlways.callCount).toBe(numberOfTimesToCallBeforeContinuing);
         });
     });
 
@@ -82,14 +90,10 @@ describe('Backbone Polling Methods', function() {
             return dfd.promise();
         });
 
-        var callbackFail = jasmine.createSpy();
-        var callbackDone = jasmine.createSpy();
-
         this.collection.configure({ refresh: 10 });
 
-        this.collection.listenTo(this.collection, 'refresh:done', callbackDone);
-
-        this.collection.listenTo(this.collection, 'refresh:fail', callbackFail);
+        var callbackFail = this.createSpyForPluginEvent('refresh:fail');
+        var callbackDone = this.createSpyForPluginEvent('refresh:done');
 
         this.collection.listenTo(this.collection, 'refresh:always', function() {
             continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing);
@@ -121,14 +125,12 @@ describe('Backbone Polling Methods', function() {
             return dfd.promise();
         });
 
-        var callbackFail = jasmine.createSpy();
-
         this.collection.configure({
             refresh: 10,
             retryRequestOnFetchFail: true
         });
 
-        this.collection.listenTo(this.collection, 'refresh:fail', callbackFail);
+        var callbackFail = this.createSpyForPluginEvent('refresh:fail');
 
         this.collection.listenTo(this.collection, 'refresh:always', function() {
             continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing);
@@ -159,14 +161,12 @@ describe('Backbone Polling Methods', function() {
             return dfd.promise();
         });
 
-        var callbackFail = jasmine.createSpy();
-
         this.collection.configure({
             refresh: 10,
             retryRequestOnFetchFail: false
         });
 
-        this.collection.listenTo(this.collection, 'refresh:fail', callbackFail);
+        var callbackFail = this.createSpyForPluginEvent('refresh:fail');
 
         this.collection.listenTo(this.collection, 'refresh:always', function() {
             continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing) ||
