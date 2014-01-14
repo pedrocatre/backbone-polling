@@ -29,6 +29,9 @@ describe('Backbone Polling Methods', function() {
         // Add backbone polling mixin
         _.extend(this.BackboneModel.prototype, window.BackbonePolling);
         this.model = new this.BackboneModel();
+
+        // Configure the refresh rate to be small so the tests execute faster
+        this.collection.configure({ refresh: 10 });
     });
 
     afterEach(function() {
@@ -56,8 +59,6 @@ describe('Backbone Polling Methods', function() {
             dfd.resolve();
             return dfd.promise();
         });
-
-        this.collection.configure({ refresh: 10 });
 
         this.collection.listenTo(this.collection, 'refresh:done', function() {
             continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing);
@@ -128,11 +129,6 @@ describe('Backbone Polling Methods', function() {
             return dfd.promise();
         });
 
-        this.collection.configure({
-            refresh: 10,
-            retryRequestOnFetchFail: true
-        });
-
         var callbackFail = createSpyForPluginEvent(this.collection, 'refresh:fail');
 
         this.collection.listenTo(this.collection, 'refresh:always', function() {
@@ -164,10 +160,7 @@ describe('Backbone Polling Methods', function() {
             return dfd.promise();
         });
 
-        this.collection.configure({
-            refresh: 10,
-            retryRequestOnFetchFail: false
-        });
+        this.collection.configure({ retryRequestOnFetchFail: false });
 
         var callbackFail = createSpyForPluginEvent(this.collection, 'refresh:fail');
 
