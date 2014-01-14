@@ -63,8 +63,8 @@
          * @private
          */
         _refresh: function (refreshRateMs) {
-            this.timeout = setTimeout(_.bind(function() {
-                clearTimeout(this.timeout);
+            this._timeoutId = setTimeout(_.bind(function() {
+                clearTimeout(this._timeoutId);
 
                 // Return if _refresh was called but the fetching is stopped
                 // should not go this far since the timeout is cleared when fetching is stopped.
@@ -107,7 +107,7 @@
          * @returns {boolean} true if is fetching, false if it is not fetching
          */
         isFetching: function() {
-            return !(_.isUndefined(this.timeout));
+            return !(_.isUndefined(this._timeoutId));
         },
 
         /**
@@ -117,8 +117,8 @@
         stopFetching: function() {
             this.doFetchRequest = false;
             if(this.isFetching()) {
-                clearTimeout(this.timeout);
-                this.timeout = undefined;
+                clearTimeout(this._timeoutId);
+                this._timeoutId = undefined;
             }
             this.abortPendingFetchRequests();
             return this;
