@@ -46,7 +46,7 @@
             return this;
         },
 
-        _refresh: function (length) {
+        _refresh: function (refreshRateMs) {
             var self = this;
 
             self.timeout = setTimeout(function() {
@@ -74,7 +74,7 @@
                     }).always(function() {
                         self._setupCallback('always', arguments);
                     });
-            }, length );
+            }, refreshRateMs );
             return this;
         },
 
