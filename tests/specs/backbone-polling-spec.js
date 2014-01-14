@@ -38,8 +38,6 @@ describe('Backbone Polling Methods and Events', function() {
         this.collection.stopFetching();
         this.model.stopFetching();
         this.collection.stopListening();
-        delete this.model;
-        delete this.collection;
     });
 
     it('should start and stop fetching', function() {
