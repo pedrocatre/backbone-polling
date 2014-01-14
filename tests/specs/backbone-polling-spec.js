@@ -1,8 +1,8 @@
-describe('Backbone Polling Methods', function() {
+describe('Backbone Polling Methods and Events', function() {
 
     /**
-     * Helper function that creates a spy and associates it with an object mixed with the backbone polling plugin and a
-     * plugin event
+     * Helper function that creates a spy and adds it as a callback parameter to be executed when an event is triggered
+     * on an object mixed with the backbone polling plugin
      * @param objectMixedWithPlugin the object mixed with the plugin
      * @param eventName the name of the event that when triggered will call the spy
      * @returns {*}
@@ -179,7 +179,6 @@ describe('Backbone Polling Methods', function() {
             expect(callbackFail).toHaveBeenCalled();
             expect(callbackFail.callCount).toBe(1);
         });
-
     });
 
 });
