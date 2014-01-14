@@ -30,20 +30,20 @@
         doFetchRequest: false,
 
         /**
-         * Specify custom options for the plugin
-         * @param pollOptions object used to customize the plugin’s behavior
-         */
-        configure: function(pollOptions){
-            this._backbonePollSettings = $.extend(true, {}, this._backbonePollSettings, pollOptions);
-        },
-
-        /**
          * Default settings for the plugin
          */
         _backbonePollSettings: {
             refresh: 1000,                      // rate at which the plugin fetches data
             fetchOptions: {},                   // options for the fetch request
             retryRequestOnFetchFail: true       // automatically retry request on fetch failure
+        },
+
+        /**
+         * Specify custom options for the plugin
+         * @param pollOptions object used to customize the plugin’s behavior
+         */
+        configure: function(pollOptions){
+            this._backbonePollSettings = $.extend(true, {}, this._backbonePollSettings, pollOptions);
         },
 
         /**
