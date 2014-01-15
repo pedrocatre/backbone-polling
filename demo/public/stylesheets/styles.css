@@ -5993,8 +5993,13 @@ td.visible-print {
     display: none !important;
   }
 }
+.truncate-string-with-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
 body {
-  min-height: 2000px;
   padding-top: 70px;
 }
 .process-title {
