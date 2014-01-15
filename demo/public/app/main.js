@@ -33,6 +33,10 @@ require.config({
         processListView: 'modules/dataMonitor/process/processListView',
         processItemView: 'modules/dataMonitor/process/processItemView',
 
+        // process controls
+        processControlSearchView: 'modules/dataMonitor/process/processControls/processControlSearch/processControlSearchView',
+        enableFetchingControlView: 'modules/dataMonitor/process/processControls/enableFetchingControl/enableFetchingControlView',
+
         // modeExample
         modelExamplePageView: 'modules/modelExample/modelExamplePage/modelExamplePageView',
 

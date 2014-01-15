@@ -6,14 +6,19 @@ define(['backbone',
     'handlebars',
     'text!../app/modules/dataMonitor/dataMonitorPage/dataMonitorPageBody.html',
     'processListView',
+    'processControlSearchView',
+    'enableFetchingControlView',
     'processCollection'
-], function (Backbone, MasterView, Handlebars, DataMonitorPageBodyTemplate, ProcessListView, ProcessCollection) {
+], function (Backbone, MasterView, Handlebars, DataMonitorPageBodyTemplate, ProcessListView, ProcessControlSearchView,
+             EnableFetchingControlView, ProcessCollection) {
     'use strict';
 
     return MasterView.extend({
 
         dom: {
-            PROCESSCONTAINER: '.process-container-js'
+            PROCESSCONTAINER: '.process-container-js',
+            PROCESSSEARCHCONTROL: '.process-search-control-container-js',
+            ENABLEFETCHINGCONTROL: '.process-enable-fetching-control-container-js'
         },
 
         initialize: function () {
@@ -43,10 +48,28 @@ define(['backbone',
             var self = this;
             this._removeSubViews();
             this.$el.html(this.dataMonitorPageBodyTemplate());
-            this.processListView = new ProcessListView({el: this.$el.find(this.dom.PROCESSCONTAINER),
-                collection: this.processCollection}).render();
+
+            // Instantiate and render the subviews
+
+            this.processControlSearchView = new ProcessControlSearchView({
+                el: this.$el.find(this.dom.PROCESSSEARCHCONTROL),
+                collection: this.processCollection
+            }).render();
+
+            this.enableFetchingControlView = new EnableFetchingControlView({
+                el: this.$el.find(this.dom.ENABLEFETCHINGCONTROL),
+                collection: this.processCollection
+            }).render();
+
+            this.processListView = new ProcessListView({
+                el: this.$el.find(this.dom.PROCESSCONTAINER),
+                collection: this.processCollection
+            }).render();
+
             this.processCollection.startFetching();
-            this.subViews.push(this.processListView);
+
+            // Add references of the views to the subviews array
+            this.subViews.push(this.processListView, this.processControlSearchView, this.enableFetchingControlView);
             return this;
         },
 

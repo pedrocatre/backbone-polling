@@ -18,21 +18,30 @@ define(['backbone',
             CONTROLFETCHINGBTN: '.control-fetching-btn-js'
         },
 
-        events: {
-            'click .control-fetching-btn-js': 'changeFetchingState'
-        },
-
         initialize: function (params, options) {
             this.processListTemplate = Handlebars.compile(ProcessListTemplate);
             this.listenTo(this.collection, 'refresh:done', this.render);
-            this.isFetching = true;
+//            this.listenTo(this.collection, 'add', this._addProcess);
+//            this.listenTo(this.collection, 'remove', this._removeProcess);
+
             MasterView.prototype.initialize.apply(this);
             return this;
         },
 
+//        _addProcess: function(model, collection, options) {
+//            var processItemView = new ProcessItemView({model: model});
+//            this.subViews.push(processItemView);
+//            this.$elementList.append(processItemView.render().el);
+//        },
+//
+//        _removeProcess: function(model, collection, options) {
+//            var removedProcessView = _.findWhere(this.subViews, {model: model});
+//            removedProcessView.remove();
+//        },
+
         render: function () {
             this._removeSubViews();
-            this.$el.html(this.processListTemplate({ isFetching: this.isFetching }));
+            this.$el.html(this.processListTemplate());
             this.$elementList = this.$el.find(this.dom.PROCESSLIST);
 
             // Create the new HTML in a fragment before adding it to the DOM
@@ -47,13 +56,6 @@ define(['backbone',
                 this.$elementList.html(fragment);
             }
 
-            return this;
-        },
-
-        changeFetchingState: function(e) {
-            (this.isFetching) ? this.collection.stopFetching() : this.collection.startFetching();
-            this.isFetching = !this.isFetching;
-            this.render();
             return this;
         },
 
