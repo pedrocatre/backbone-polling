@@ -16,7 +16,7 @@ define(['backbone',
 
         initialize: function () {
             this.processItemTemplate = Handlebars.compile(ProcessItemTemplate);
-            this.listenTo(this.model, 'refresh:done', this.render);
+            this.listenTo(this.model, 'refresh:loaded', this.render);
             return this;
         },
 

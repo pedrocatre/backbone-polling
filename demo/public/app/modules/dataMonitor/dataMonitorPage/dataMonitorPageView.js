@@ -32,7 +32,7 @@ define(['backbone',
             this.processCollection.configure(pollOptions);
 
             // Add some listeners to the events that the plugin triggers
-            this.listenTo(this.processCollection, 'refresh:done', function() {
+            this.listenTo(this.processCollection, 'refresh:loaded', function() {
                 console.log('Done with the fetch request');
             });
             this.listenTo(this.processCollection, 'refresh:fail', function() {

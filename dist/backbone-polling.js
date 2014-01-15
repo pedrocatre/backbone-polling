@@ -79,7 +79,7 @@
                 this.fetchRequest = this.fetch(this._backbonePollSettings.fetchOptions);
 
                 this.fetchRequest.done(_.bind(function() {
-                        this.trigger('refresh:done');
+                        this.trigger('refresh:loaded');
                         this._refresh(this._backbonePollSettings.refresh);
                     }, this)).fail(_.bind(function() {
                         this.trigger('refresh:fail');

@@ -58,7 +58,7 @@ describe('Backbone Polling Methods and Events', function() {
             return dfd.promise();
         });
 
-        this.collection.listenTo(this.collection, 'refresh:done', function() {
+        this.collection.listenTo(this.collection, 'refresh:loaded', function() {
             continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing);
         });
 
@@ -95,7 +95,7 @@ describe('Backbone Polling Methods and Events', function() {
         this.collection.configure({ refresh: 10 });
 
         var callbackFail = createSpyForPluginEvent(this.collection, 'refresh:fail');
-        var callbackDone = createSpyForPluginEvent(this.collection, 'refresh:done');
+        var callbackDone = createSpyForPluginEvent(this.collection, 'refresh:loaded');
 
         this.collection.listenTo(this.collection, 'refresh:always', function() {
             continueFlag = (counter++ === numberOfTimesToCallBeforeContinuing);

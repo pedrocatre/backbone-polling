@@ -20,7 +20,7 @@ define(['backbone',
 
         initialize: function (params, options) {
             this.processListTemplate = Handlebars.compile(ProcessListTemplate);
-            this.listenTo(this.collection, 'refresh:done', this.render);
+            this.listenTo(this.collection, 'refresh:loaded', this.render);
             MasterView.prototype.initialize.apply(this);
             return this;
         },

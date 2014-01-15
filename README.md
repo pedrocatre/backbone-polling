@@ -93,7 +93,7 @@ var options = {
 
 ## Events
 
-* refresh:done: is triggered every time a fetch finishes successfully.
+* refresh:loaded: is triggered every time a fetch/refresh finishes successfully.
 * refresh:fail: is triggered every time a fetch request fails.
 * refresh:always: is triggered every time a fetch request finishes.
 
