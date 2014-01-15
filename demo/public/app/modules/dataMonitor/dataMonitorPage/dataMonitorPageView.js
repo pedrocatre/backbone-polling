@@ -6,11 +6,11 @@ define(['backbone',
     'handlebars',
     'text!../app/modules/dataMonitor/dataMonitorPage/dataMonitorPageBody.html',
     'processListView',
-    'processControlSearchView',
+    'processSearchControlView',
     'enableFetchingControlView',
     'processOrderControlView',
     'processCollection'
-], function (Backbone, MasterView, Handlebars, DataMonitorPageBodyTemplate, ProcessListView, ProcessControlSearchView,
+], function (Backbone, MasterView, Handlebars, DataMonitorPageBodyTemplate, ProcessListView, ProcessSearchControlView,
              EnableFetchingControlView, ProcessOrderControlView, ProcessCollection) {
     'use strict';
 
@@ -53,7 +53,7 @@ define(['backbone',
 
             // Instantiate and render the subviews
 
-            this.processControlSearchView = new ProcessControlSearchView({
+            this.processSearchControlView = new ProcessSearchControlView({
                 el: this.$el.find(this.dom.PROCESSSEARCHCONTROL),
                 collection: this.processCollection
             }).render();
@@ -76,7 +76,7 @@ define(['backbone',
             this.processCollection.startFetching();
 
             // Add references of the views to the subviews array
-            this.subViews.push(this.processListView, this.processControlSearchView, this.enableFetchingControlView,
+            this.subViews.push(this.processListView, this.processSearchControlView, this.enableFetchingControlView,
                 this.processOrderControlView);
             return this;
         },

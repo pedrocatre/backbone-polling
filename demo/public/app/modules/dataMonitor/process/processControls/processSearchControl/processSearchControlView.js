@@ -4,7 +4,7 @@
 define(['backbone',
     'handlebars',
     'baseView',
-    'text!../app/modules/dataMonitor/process/processControls/processControlSearch/processControlSearch.html',
+    'text!../app/modules/dataMonitor/process/processControls/processSearchControl/processSearchControl.html',
     'handlebarsHelpers'
 ], function (Backbone, Handlebars, BaseView, ProcessControlSearchHtml) {
     'use strict';

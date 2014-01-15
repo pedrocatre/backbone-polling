@@ -34,7 +34,7 @@ require.config({
         processItemView: 'modules/dataMonitor/process/processItemView',
 
         // process controls
-        processControlSearchView: 'modules/dataMonitor/process/processControls/processControlSearch/processControlSearchView',
+        processSearchControlView: 'modules/dataMonitor/process/processControls/processSearchControl/processSearchControlView',
         enableFetchingControlView: 'modules/dataMonitor/process/processControls/enableFetchingControl/enableFetchingControlView',
         processOrderControlView: 'modules/dataMonitor/process/processControls/processOrderControl/processOrderControlView',
 
