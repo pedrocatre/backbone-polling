@@ -14,19 +14,28 @@
             processesData[i].percentageComplete =
                 (processesData[i].percentageComplete > 100) ? 100: processesData[i].percentageComplete;
         }
-    }
+    };
 
-    var sampleTypesOfProcess = ['Testing', 'Refactoring', 'Implementing', 'Compressing', 'Hammering', 'Forking'];
+    var sampleTypesOfProcess = ['Tests', 'Performance', 'Nightly', 'Compressing', 'Hive', 'Backup'];
+    var sampleTitlesByType = {
+        Tests: 'Selenium UI Tests',
+        Performance: 'FE performance CI Job',
+        Nightly: 'Nightly Master CI Job',
+        Compressing: 'Compressing Old Data',
+        Hive: 'Sales Report Hive Job',
+        Backup: 'DB Backup'
+    };
 
     var createNewProcess = function() {
+        var typeOfProcess = sampleTypesOfProcess[Math.floor((Math.random() * sampleTypesOfProcess.length))];
         return {
             'id': uuid.v4(),
             'typeOfProcess': 'Executing',
             'percentageComplete': Math.floor((Math.random() * 20) + 1),
             'state': 'executing',
             'numberOfProcessedFiles': Math.floor((Math.random() * 5) + 1),
-            'title': 'process ' + Math.floor((Math.random() * 10000) + 1),
-            'type': sampleTypesOfProcess[Math.floor((Math.random() * sampleTypesOfProcess.length))]
+            'title': sampleTitlesByType[typeOfProcess] + ' (' + Math.floor((Math.random() * 99) + 1) + ')',
+            'type': typeOfProcess
         };
     };
 

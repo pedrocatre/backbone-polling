@@ -6030,8 +6030,8 @@ body {
   padding-top: 8px;
 }
 .process-item .process-content .process-title {
-  width: 86px;
-  margin-right: 40px;
+  width: 240px;
+  margin-right: 5px;
 }
 .process-item .process-content .files-processed {
   width: 45px;

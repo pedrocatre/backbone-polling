@@ -9,18 +9,18 @@ define(['handlebars',
     Handlebars.registerHelper('determineIconGivenTypeOfProcess', function(typeOfProcess) {
         switch(typeOfProcess)
         {
-            case 'Refactoring':
-                return 'fa fa-tasks';
-            case 'Testing':
+            case 'Performance':
+                return 'fa fa-tachometer';
+            case 'Tests':
                 return 'fa fa-bug';
-            case 'Implementing':
+            case 'Nightly':
                 return 'fa fa-cogs';
             case 'Compressing':
-                return 'fa fa-wrench';
-            case 'Hammering':
-                return 'fa fa-gavel';
-            case 'Forking':
-                return 'fa fa-code-fork';
+                return 'fa fa-compress';
+            case 'Hive':
+                return 'fa fa-tasks';
+            case 'Backup':
+                return 'fa fa-floppy-o';
         }
         return '';
     });
