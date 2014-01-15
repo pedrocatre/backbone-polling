@@ -31,7 +31,6 @@ define(['backbone',
         },
 
         navigateToSingleProcessMonitorPage: function () {
-            //this.model.get('Id')
             window.AppUtils.app.navigate('/processDetails/' + this.model.get('id'), {trigger: true});
         },
 

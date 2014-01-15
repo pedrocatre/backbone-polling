@@ -24,10 +24,13 @@ define([
         },
 
         _activateNavBtn: function () {
+            var backboneHistoryFragment = Backbone.history.fragment;
             $('.navbar-nav li').removeClass('active');
-            $('.navbar-nav li a[href="#' + Backbone.history.fragment + '"]')
+            if(backboneHistoryFragment.indexOf('processDetails') !== -1) {
+                backboneHistoryFragment = '';
+            }
+            $('.navbar-nav li a[href="#' + backboneHistoryFragment + '"]')
                 .parent().addClass('active');
-
         },
 
         _tearDownLastPageResources: function () {

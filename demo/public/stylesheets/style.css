@@ -6012,6 +6012,9 @@ body {
 .process-container .control-fetching-btn {
     margin-bottom: 10px;
 }
+.monitor-processes-list {
+    cursor: pointer;
+}
 .process-list {
     padding: 0;
     list-style-type: none;
