@@ -20,7 +20,7 @@ define(['backbone',
         },
 
         events: {
-            'keyup  .search-term-control-js': 'changeSearchTermFilter'
+            'keyup  .search-term-control-js': '_setTimeOutForChangeSearchFilter'
         },
 
         render: function () {
@@ -28,7 +28,29 @@ define(['backbone',
             return this;
         },
 
-        changeSearchTermFilter: function() {
+        /**
+         * Delay calling a function to change the search term until the user appears to have finished typing
+         * @private
+         */
+        _setTimeOutForChangeSearchFilter: function() {
+            var self = this;
+
+            // Interrupt the timeout if the user keeps typing
+            if (this.searchTimerId) {
+                window.clearTimeout(this.searchTimerId);
+            }
+
+            // Delay calling the function that changes the search term
+            this.searchTimerId = window.setTimeout(function() {
+                self._changeSearchTermFilter.apply(self);
+            }, 300);
+        },
+
+        /**
+         * Configure the collection to take into account a search term in the fetch options
+         * @private
+         */
+        _changeSearchTermFilter: function() {
             var searchTerm = this.$el.find('.search-term-control-js').val(),
                 isFetching = this.collection.isFetching();
 
