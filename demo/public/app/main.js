@@ -38,6 +38,9 @@ require.config({
         enableFetchingControlView: 'modules/dataMonitor/process/processControls/enableFetchingControl/enableFetchingControlView',
         processOrderControlView: 'modules/dataMonitor/process/processControls/processOrderControl/processOrderControlView',
 
+        // single process
+        singleProcessMonitorPageView: 'modules/dataMonitor/singleProcessMonitorPage/singleProcessMonitorPageView',
+
         // modeExample
         modelExamplePageView: 'modules/modelExample/modelExamplePage/modelExamplePageView',
 

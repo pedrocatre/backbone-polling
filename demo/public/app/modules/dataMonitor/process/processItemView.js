@@ -16,13 +16,23 @@ define(['backbone',
 
         initialize: function () {
             this.processItemTemplate = Handlebars.compile(ProcessItemTemplate);
+            this.listenTo(this.model, 'refresh:done', this.render);
             return this;
+        },
+
+        events: {
+            'click': 'navigateToSingleProcessMonitorPage'
         },
 
         render: function () {
             var processItemHtml = this.processItemTemplate(this.model.toJSON());
             this.$el.html(processItemHtml);
             return this;
+        },
+
+        navigateToSingleProcessMonitorPage: function () {
+            //this.model.get('Id')
+            window.AppUtils.app.navigate('/processDetails/' + this.model.get('id'), {trigger: true});
         },
 
         remove:function() {

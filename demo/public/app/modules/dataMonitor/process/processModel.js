@@ -1,13 +1,14 @@
 /**
  * A simple example model to represent a process
  */
-define(['backbone'
-], function (Backbone) {
+define(['backbone',
+    'backbonePolling'
+], function (Backbone, BackbonePolling) {
     'use strict';
 
-    return Backbone.Model.extend({
+    var ProcessModel = Backbone.Model.extend({
 
-        idAttribute: 'Id',
+        urlRoot: '/processes',
 
         defaults: {
             typeOfProcess: 'Refactoring',
@@ -17,4 +18,9 @@ define(['backbone'
             title: ''
         }
     });
+
+    // Add backbone polling mixin
+    _.extend(ProcessModel.prototype, BackbonePolling);
+
+    return ProcessModel;
 });

@@ -1,4 +1,9 @@
-// Generate dummy process data
+/**
+ * Generate dummy process data
+ */
+
+var uuid = require('node-uuid');
+
 (function() {
     var processesData = [];
 
@@ -18,6 +23,7 @@
 
     var createNewProcess = function() {
         return {
+            'id': uuid.v4(),
             'typeOfProcess': 'Executing',
             'percentageComplete': Math.floor((Math.random() * 20) + 1),
             'state': 'executing',

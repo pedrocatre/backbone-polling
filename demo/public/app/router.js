@@ -1,19 +1,21 @@
 /**
- * Application's router. For now it only has one path so this was not even necessary.
+ * Application's router
  */
 define([
     'jquery',
     'underscore',
     'backbone',
     'dataMonitorPageView',
+    'singleProcessMonitorPageView',
     'modelExamplePageView',
     'bootstrap'
-], function ($, _, Backbone, DataMonitorPageView, ModelExamplePageView) {
+], function ($, _, Backbone, DataMonitorPageView, SingleProcessMonitorPageView, ModelExamplePageView) {
     'use strict';
 
     var AppRouter = Backbone.Router.extend({
         routes: {
             'modelExample': 'modelExamplePage',
+            'processDetails/:processId': 'singleProcessMonitorPage',
 			'*actions': 'dataMonitorPage'
         },
 
@@ -37,6 +39,10 @@ define([
                 this.modelExamplePageView.remove();
                 this.modelExamplePageView = null;
             }
+            if(!_.isUndefined(this.singleProcessMonitorPageView) && !_.isNull(this.singleProcessMonitorPageView)) {
+                this.singleProcessMonitorPageView.remove();
+                this.singleProcessMonitorPageView = null;
+            }
         },
 
         _prepareForNewPage: function () {
@@ -50,6 +56,12 @@ define([
             this.$bodyContent.html(this.dataMonitorPageView.render().el);
         },
 
+        singleProcessMonitorPage: function(processId) {
+            this._prepareForNewPage();
+            this.singleProcessMonitorPageView = new SingleProcessMonitorPageView({ processId: processId });
+            this.$bodyContent.html(this.singleProcessMonitorPageView.render().el);
+        },
+
         modelExamplePage: function() {
             this._prepareForNewPage();
             this.modelExamplePageView = new ModelExamplePageView();
@@ -60,6 +72,7 @@ define([
 
     var initialize = function () {
         var app = new AppRouter();
+        window.AppUtils.app = app;
         Backbone.history.start();
     };
 

@@ -28,3 +28,21 @@ exports.list = function(req, res) {
         res.send(orderedProcessData);
     }
 };
+
+/**
+ * Get process item
+ * @param req
+ * @param res
+ */
+exports.item = function(req, res) {
+    var processId = req.params.id,
+        process;
+
+    process = _.findWhere(processesData, {id: processId});
+
+    if(_.isUndefined(process)) {
+        res.status(404).send('Not found');
+    }
+
+    res.send(process);
+}

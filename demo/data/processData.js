@@ -1,4 +1,6 @@
-// Generate dummy process data
+/**
+ * Generate dummy process data
+ */
 (function() {
     var processData = {value: 0};
 

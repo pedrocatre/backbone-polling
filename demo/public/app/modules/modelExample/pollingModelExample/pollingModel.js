@@ -11,7 +11,7 @@ define(['backbone',
 
         idAttribute: 'Id',
 
-        url: '/process',
+        url: '/processExample',
 
         defaults: {
             value: 0
