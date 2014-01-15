@@ -2,21 +2,19 @@
  * Generate dummy process data
  */
 (function() {
-    var processData = {value: 0};
+    var processData = { value: 0 },
+        MAX_VALUE = 3000,
+        REFRESH_RATE_MS = 500;
 
-    var maxValue = 3000;
-
-    var refreshRate = 500;
-
-    var startGeneratingData = function(length) {
+    var startGeneratingData = function(refreshRateMs) {
         var self = this;
         this.timeout = setTimeout(function() {
 
             // Update existing process value
-            processData.value = Math.floor((Math.random() * 3000));
+            processData.value = Math.floor((Math.random() * MAX_VALUE));
 
-            startGeneratingData(refreshRate);
-        }, length );
+            startGeneratingData(REFRESH_RATE_MS);
+        }, refreshRateMs );
 
     };
 

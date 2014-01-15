@@ -2,11 +2,10 @@
  * Generate dummy process data
  */
 (function() {
-    var uuid = require('node-uuid');
-    var processesData = [];
-
-    var maxNumberOrProcesses = 10;
-    var countToCreateNew = 0;
+    var uuid = require('node-uuid'),
+        processesData = [],
+        MAX_NUMBER_OF_PROCESSES = 10,
+        countToCreateNew = 0;
 
     var updateExistingProcesses = function() {
         for(var i=0; i< processesData.length; i++) {
@@ -31,9 +30,9 @@
         };
     };
 
-    var refreshRate = 500;
+    var REFRESH_RATE_MS = 500;
 
-    var startGeneratingData = function(length) {
+    var startGeneratingData = function(refreshRateMs) {
         var self = this;
         this.timeout = setTimeout(function() {
 
@@ -47,12 +46,12 @@
             }
 
             // Remove excess processes
-            if(processesData.length > maxNumberOrProcesses) {
-                processesData.splice(0, maxNumberOrProcesses/2);
+            if(processesData.length > MAX_NUMBER_OF_PROCESSES) {
+                processesData.splice(0, MAX_NUMBER_OF_PROCESSES/2);
             }
 
-            startGeneratingData(refreshRate);
-        }, length );
+            startGeneratingData(REFRESH_RATE_MS);
+        }, refreshRateMs );
 
     };
 
