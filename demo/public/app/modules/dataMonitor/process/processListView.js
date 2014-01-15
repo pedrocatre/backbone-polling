@@ -21,23 +21,9 @@ define(['backbone',
         initialize: function (params, options) {
             this.processListTemplate = Handlebars.compile(ProcessListTemplate);
             this.listenTo(this.collection, 'refresh:done', this.render);
-//            this.listenTo(this.collection, 'add', this._addProcess);
-//            this.listenTo(this.collection, 'remove', this._removeProcess);
-
             MasterView.prototype.initialize.apply(this);
             return this;
         },
-
-//        _addProcess: function(model, collection, options) {
-//            var processItemView = new ProcessItemView({model: model});
-//            this.subViews.push(processItemView);
-//            this.$elementList.append(processItemView.render().el);
-//        },
-//
-//        _removeProcess: function(model, collection, options) {
-//            var removedProcessView = _.findWhere(this.subViews, {model: model});
-//            removedProcessView.remove();
-//        },
 
         render: function () {
             this._removeSubViews();

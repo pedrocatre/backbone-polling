@@ -49,7 +49,7 @@
          * @param pollOptions object used to customize the plugin’s behavior
          */
         configure: function(pollOptions){
-            this._backbonePollSettings = $.extend({}, this._backbonePollSettings, pollOptions);
+            this._backbonePollSettings = $.extend(true, {}, this._backbonePollSettings, pollOptions);
         },
 
         /**

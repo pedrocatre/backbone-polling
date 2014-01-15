@@ -11,9 +11,6 @@ define(['backbone',
 
     return BaseView.extend({
 
-        tagName: 'form',
-        className: 'form-search',
-
         initialize: function () {
             this.processControlSearchHtml = ProcessControlSearchHtml;
             return this;
@@ -57,11 +54,7 @@ define(['backbone',
             // Stop fetching so that any pending fetch request is aborted
             this.collection.stopFetching();
 
-            if(searchTerm !== '') {
-                this.collection.configure({ fetchOptions: {data: {searchTerm: searchTerm }}});
-            } else {
-                this.collection.configure({ fetchOptions: {}});
-            }
+            this.collection.configure({ fetchOptions: { data: {searchTerm: searchTerm }}});
 
             // Start fetching again, now with new fetch options, if the collection was fetching when the search term
             // changed

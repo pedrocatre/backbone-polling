@@ -5,10 +5,18 @@ var _ = require('underscore');
  */
 exports.list = function(req, res) {
     var searchTerm = req.param('searchTerm'),
+        orderBy = req.param('orderBy'),
+        orderedProcessData,
         filteredProcessesData;
-    if(!(_.isUndefined(searchTerm))) {
+    if(_.isUndefined(orderBy)) { orderBy = 'title'; }
+
+    orderedProcessData = _.sortBy(processesData, function(process){
+        return process[orderBy];
+    });
+
+    if(!(_.isUndefined(searchTerm)) && searchTerm !== '') {
         // Filter the data using the search term
-        filteredProcessesData = _.filter(processesData, function(process) {
+        filteredProcessesData = _.filter(orderedProcessData, function(process) {
             return _.some(process, function(value) {
                 // convert the value to string
                 // if the value contains the searchTerm return true
@@ -17,6 +25,6 @@ exports.list = function(req, res) {
         });
         res.send(filteredProcessesData);
     } else {
-        res.send(processesData);
+        res.send(orderedProcessData);
     }
 };

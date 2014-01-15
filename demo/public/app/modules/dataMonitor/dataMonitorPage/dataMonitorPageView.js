@@ -8,9 +8,10 @@ define(['backbone',
     'processListView',
     'processControlSearchView',
     'enableFetchingControlView',
+    'processOrderControlView',
     'processCollection'
 ], function (Backbone, MasterView, Handlebars, DataMonitorPageBodyTemplate, ProcessListView, ProcessControlSearchView,
-             EnableFetchingControlView, ProcessCollection) {
+             EnableFetchingControlView, ProcessOrderControlView, ProcessCollection) {
     'use strict';
 
     return MasterView.extend({
@@ -18,7 +19,8 @@ define(['backbone',
         dom: {
             PROCESSCONTAINER: '.process-container-js',
             PROCESSSEARCHCONTROL: '.process-search-control-container-js',
-            ENABLEFETCHINGCONTROL: '.process-enable-fetching-control-container-js'
+            ENABLEFETCHINGCONTROL: '.process-enable-fetching-control-container-js',
+            PROCESSORDERCONTROL: '.process-order-control-container-js'
         },
 
         initialize: function () {
@@ -56,6 +58,11 @@ define(['backbone',
                 collection: this.processCollection
             }).render();
 
+            this.processOrderControlView = new ProcessOrderControlView({
+                el: this.$el.find(this.dom.PROCESSORDERCONTROL),
+                collection: this.processCollection
+            }).render();
+
             this.enableFetchingControlView = new EnableFetchingControlView({
                 el: this.$el.find(this.dom.ENABLEFETCHINGCONTROL),
                 collection: this.processCollection
@@ -69,7 +76,8 @@ define(['backbone',
             this.processCollection.startFetching();
 
             // Add references of the views to the subviews array
-            this.subViews.push(this.processListView, this.processControlSearchView, this.enableFetchingControlView);
+            this.subViews.push(this.processListView, this.processControlSearchView, this.enableFetchingControlView,
+                this.processOrderControlView);
             return this;
         },
 
