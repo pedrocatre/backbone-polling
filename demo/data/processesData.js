@@ -1,10 +1,8 @@
 /**
  * Generate dummy process data
  */
-
-var uuid = require('node-uuid');
-
 (function() {
+    var uuid = require('node-uuid');
     var processesData = [];
 
     var maxNumberOrProcesses = 10;
