@@ -27,7 +27,7 @@ define(['backbone',
             this.dataMonitorPageBodyTemplate = Handlebars.compile(DataMonitorPageBodyTemplate);
 
             // Setup some example options for the Backbone Polling plugin
-            var pollOptions = { refresh: 2000 };
+            var pollOptions = { refresh: 2000, fetchOptions: { reset:true } };
             this.processCollection = new ProcessCollection();
             this.processCollection.configure(pollOptions);
 

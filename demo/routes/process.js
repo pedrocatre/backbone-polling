@@ -8,6 +8,7 @@ exports.list = function(req, res) {
         orderBy = req.param('orderBy'),
         orderedProcessData,
         filteredProcessesData;
+    console.log('order by: ' + orderBy)
     if(_.isUndefined(orderBy)) { orderBy = 'title'; }
 
     orderedProcessData = _.sortBy(processesData, function(process){
