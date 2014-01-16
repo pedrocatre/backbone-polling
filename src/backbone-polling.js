@@ -70,8 +70,9 @@
          */
         _refresh: function (refreshRateMs) {
             this._backbonePollTimeoutId = setTimeout(_.bind(function() {
-                clearTimeout(this._backbonePollTimeoutId);
-
+                if (this._backbonePollTimeoutId) {
+                    clearTimeout(this._backbonePollTimeoutId);
+                }
                 // Return if _refresh was called but the fetching is stopped
                 // should not go this far since the timeout is cleared when fetching is stopped.
                 if(!this._backbonePollEnabled) { return; }
@@ -123,7 +124,9 @@
         stopFetching: function() {
             this._backbonePollEnabled = false;
             if(this.isFetching()) {
-                clearTimeout(this._backbonePollTimeoutId);
+                if (this._backbonePollTimeoutId) {
+                    clearTimeout(this._backbonePollTimeoutId);
+                }
                 this._backbonePollTimeoutId = undefined;
             }
             this.abortPendingFetchRequests();

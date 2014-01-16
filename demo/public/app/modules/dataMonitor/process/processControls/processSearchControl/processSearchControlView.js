@@ -2,11 +2,12 @@
  * View responsible for the search control
  */
 define(['backbone',
+    'underscore',
     'handlebars',
     'baseView',
     'text!../app/modules/dataMonitor/process/processControls/processSearchControl/processSearchControl.html',
     'handlebarsHelpers'
-], function (Backbone, Handlebars, BaseView, ProcessControlSearchHtml) {
+], function (Backbone, _, Handlebars, BaseView, ProcessControlSearchHtml) {
     'use strict';
 
     return BaseView.extend({
@@ -30,7 +31,6 @@ define(['backbone',
          * @private
          */
         _setTimeOutForChangeSearchFilter: function() {
-            var self = this;
 
             // Interrupt the timeout if the user keeps typing
             if (this.searchTimerId) {
@@ -38,9 +38,9 @@ define(['backbone',
             }
 
             // Delay calling the function that changes the search term
-            this.searchTimerId = window.setTimeout(function() {
-                self._changeSearchTermFilter.apply(self);
-            }, 300);
+            this.searchTimerId = window.setTimeout(_.bind(function() {
+                this._changeSearchTermFilter();
+            }, this), 300);
         },
 
         /**
