@@ -8,7 +8,6 @@
 
     modules: [
         {
-            //module names are relative to baseUrl
             name: 'main'
         },
         {
